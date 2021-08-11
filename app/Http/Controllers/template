@@ -1,0 +1,39 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+use App\Models\Tempalte;
+
+class TempalteController extends Controller
+{
+    public function index(){
+
+    }
+
+    public function show(){
+
+    }
+
+    public function create(){
+
+    }
+
+    public function store(){
+        
+    }
+
+    public function edit(){
+
+    }
+
+    public function update(){
+
+    }
+    public function delete(){
+
+    }
+    
+
+}
