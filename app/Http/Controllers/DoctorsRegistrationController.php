@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\DoctorsRegistration;
 class DoctorsRegistrationController extends Controller
@@ -11,11 +11,15 @@ class DoctorsRegistrationController extends Controller
     }
 
     public function show(){
-        
+        $requests = DB::table('doctors_registrations')
+            ->select('name', 'surname', 'pwz_number', 'pesel', 'email')
+            ->take(5)
+            ->get();
+        return view('managment.doctorsRequests', ['requests' => $requests]);
     }
 
     public function create(){
-        return view('doctorsRegistration');
+        return view('doctors.preRegistration');
     }
 
     public function store(){

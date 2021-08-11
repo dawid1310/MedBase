@@ -28,6 +28,7 @@ Auth::routes();
 Route::post('/add-registration-request', [App\Http\Controllers\DoctorsRegistrationController::class, 'store']);
 Route::get('/manage-doctors', [App\Http\Controllers\ManagerCoontroller::class, 'doctors']);
 Route::get('/doctors-registration', [App\Http\Controllers\DoctorsRegistrationController::class, 'create']);
+Route::get('/all-requests', [App\Http\Controllers\DoctorsRegistrationController::class, 'show']);
 Route::get('/manage', [App\Http\Controllers\ManagerCoontroller::class, 'show']);
 Route::get('/home', [App\Http\Controllers\HomeController::class]);
 Route::get('/doctors', [App\Http\Controllers\DoctorController::class, 'index']);

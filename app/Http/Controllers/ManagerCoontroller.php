@@ -15,7 +15,7 @@ class ManagerCoontroller extends Controller
     }
 
     public function doctors(){
-        return view('doctorsManagment');
+        return view('managment.doctors');
     }
 
     public function store(){
