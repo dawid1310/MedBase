@@ -7,11 +7,11 @@ use Illuminate\Http\Request;
 class ManagerCoontroller extends Controller
 {
     public function index(){
-
+        return view('managment.index');
     }
 
     public function show(){
-        return view('manage');
+        
     }
 
     public function doctors(){

@@ -35,7 +35,7 @@
                 <img class="card-img" src="./assets/img/services-03.jpg" alt="Card image">
                 <div class="service-work-vertical card-img-overlay d-flex align-items-end">
                     <div class="service-work-content text-left text-light">
-                        <span class="btn btn-outline-light rounded-pill mb-lg-3 px-lg-4 light-300">Marketing</span>
+                        <span class="btn btn-outline-light rounded-pill mb-lg-3 px-lg-4 light-300">Specjalizacje</span>
                         <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing</p>
                     </div>
                 </div>
@@ -48,7 +48,7 @@
                 <img class="card-img" src="./assets/img/services-04.jpg" alt="Card image">
                 <div class="service-work-vertical card-img-overlay d-flex align-items-end">
                     <div class="service-work-content text-left text-light">
-                        <span class="btn btn-outline-light rounded-pill mb-lg-3 px-lg-4 light-300">Graphic</span>
+                        <span class="btn btn-outline-light rounded-pill mb-lg-3 px-lg-4 light-300">Choroby i objawy</span>
                         <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing</p>
                     </div>
                 </div>

@@ -37,7 +37,7 @@
                             <a class="nav-link btn-outline-primary rounded-pill px-3" href="/doctors">Lekarze</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="/visits/create">Wizyty</a>
+                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="/visits">Wizyty</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link btn-outline-primary rounded-pill px-3" href="/account">Konto</a>
