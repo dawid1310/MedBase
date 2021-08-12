@@ -12,7 +12,7 @@ class DoctorsRegistrationController extends Controller
 
     public function show(){
         $requests = DB::table('doctors_registrations')
-            ->select('name', 'surname', 'pwz_number', 'pesel', 'email')
+            ->select('id', 'name', 'surname', 'pwz_number', 'pesel', 'email')
             ->take(5)
             ->get();
         return view('managment.doctorsRequests', ['requests' => $requests]);
