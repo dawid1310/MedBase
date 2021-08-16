@@ -19,9 +19,9 @@
             height: 100%;
             /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#cfd8dc+0,607d8b+100,b0bec5+100 */
             background: #cfd8dc; /* Old browsers */
-            background: -moz-linear-gradient(-45deg,  #ffffff 0%, #65c4d4 100%, #6b4188 100%); /* FF3.6-15 */
-            background: -webkit-linear-gradient(-45deg,  #ffffff 0%,#65c4d4 100%,#6b4188 100%); /* Chrome10-25,Safari5.1-6 */
-            background: linear-gradient(135deg,  #ffffff 0%,#65c4d4 100%,#6b4188 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            background: -moz-linear-gradient(-45deg,  #cfd8dc 0%, #607d8b 100%, #b0bec5 100%); /* FF3.6-15 */
+            background: -webkit-linear-gradient(-45deg,  #cfd8dc 0%,#607d8b 100%,#b0bec5 100%); /* Chrome10-25,Safari5.1-6 */
+            background: linear-gradient(135deg,  #cfd8dc 0%,#607d8b 100%,#b0bec5 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
             filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cfd8dc', endColorstr='#b0bec5',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
         }
 
@@ -78,7 +78,7 @@
 
         .cont_forms_active_sign_up {
             box-shadow: 1px 10px 30px -10px rgba(0,0,0,0.5);
-            height: 480px;  
+            height: 420px;  
             top:20px;
             left:320px;
             -webkit-transition: all 0.5s;
@@ -91,7 +91,7 @@
         .cont_img_back_grey {
             position: absolute;
             width: 950px;
-            top:-10px;
+            top:-80px;
             left: -116px;
         }
 
@@ -109,7 +109,7 @@
         .cont_img_back_ {
             position: absolute;
             width: 950px;
-            top:-10px;
+            top:-80px;
             left: -116px;
         }
 
@@ -133,7 +133,7 @@
         }
 
         .cont_forms_active_sign_up > .cont_img_back_ {
-            top:50px;  
+            top:0px;  
             left: -435px;
             -webkit-transition: all 0.5s;
             -moz-transition: all 0.5s;
@@ -378,41 +378,32 @@
             
             <div class="cont_back_info">
                <div class="cont_img_back_grey">
-               <img src="./assets/img/reception.jpg" alt="" />
+               <img src="https://images.unsplash.com/42/U7Fc1sy5SCUDIu4tlJY3_NY_by_PhilippHenzler_philmotion.de.jpg?ixlib=rb-0.3.5&q=50&fm=jpg&crop=entropy&s=7686972873678f32efaf2cd79671673d" alt="" />
                </div>
                
             </div>
         <div class="cont_forms" >
             <div class="cont_img_back_">
-               <img src="./assets/img/reception.jpg" alt="" />
+               <img src="https://images.unsplash.com/42/U7Fc1sy5SCUDIu4tlJY3_NY_by_PhilippHenzler_philmotion.de.jpg?ixlib=rb-0.3.5&q=50&fm=jpg&crop=entropy&s=7686972873678f32efaf2cd79671673d" alt="" />
         </div>
-        <form action="{{ route('login') }}" method="post">
-            @csrf
-            <div class="cont_form_login">
-                <h2>LOGOWANIE</h2>
-                <input placeholder="Email"  type="email" name="email" autofocus/>
-                <input placeholder="Password"  type="password" name="password"/>
-                <button type="submit" class="btn_login">ZATWIERDŹ</button>
-                </div>
-            </form>
-
-            <form action="{{ route('register') }}" method="post">
-                @csrf
-                <div class="cont_form_sign_up">
+        <div class="cont_form_login">
+        <a href="{{ route('login') }}" onclick="ocultar_login_sign_up()" ><i class="material-icons">&#xE5C4;</i></a>
+        <h2>LOGOWANIE</h2>
+        <input placeholder="Email" id="email" type="email" name="email"required autocomplete="email" autofocus/>
+        <input placeholder="Password" id="password" type="password" name="password" required autocomplete="current-password"/>
+        <button class="btn_login" onclick="cambiar_login()">ZATWIERDŹ</button>
+        </div>
+          
+           <div class="cont_form_sign_up">
+        <a href="#" onclick="ocultar_login_sign_up()"><i class="material-icons">&#xE5C4;</i></a>
+             <h2>REJESTRACJA</h2>
+        <input type="email" placeholder="Email" />
+        <input type="text" placeholder="User" />
+        <input type="password" placeholder="Password" />
+        <input type="password" placeholder="Confirm Password" />
+        <button class="btn_sign_up" onclick="cambiar_sign_up()">ZATWIERDŹ</button>
         
-                    <h2>REJESTRACJA</h2>
-
-                            <input type="text"  name="name" required autocomplete="name" autofocus placeholder="Imie">
-                            <input type="text"  name="surname" required autocomplete="surname" autofocus placeholder="Nazwisko">
-                            <input  type="email" name="email" required autocomplete="email" placeholder="E-mail">
-                            <input  type="password" name="password" required autocomplete="new-password" placeholder="Hasło">
-                            <input  type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Powtórz hasło">
-                            <button type="submit" class="btn_login">ZATWIERDŹ</button>
-
-               
-                </div>
-            </form>
-
+          </div>
         
             </div>
             
@@ -436,6 +427,16 @@
                 setTimeout(function(){   document.querySelector('.cont_form_login').style.display = "none";},400);  
             }    
 
+            function ocultar_login_sign_up() {
+                document.querySelector('.cont_forms').className = "cont_forms";  
+                document.querySelector('.cont_form_sign_up').style.opacity = "0";               
+                document.querySelector('.cont_form_login').style.opacity = "0"; 
+                setTimeout(function(){
+                    document.querySelector('.cont_form_sign_up').style.display = "none";
+                    document.querySelector('.cont_form_login').style.display = "none";
+                },500);              
+            }
+
         </script>
 </body>
 </html>
@@ -458,7 +459,7 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
-                                <input  type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -472,7 +473,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
-                                <input rd" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -485,7 +486,7 @@
                         <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" er" {{ old('remember') ? 'checked' : '' }}>
+                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                     <label class="form-check-label" for="remember">
                                         {{ __('Remember Me') }}

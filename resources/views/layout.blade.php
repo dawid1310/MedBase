@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="/assets/css/custom.css">
 </head>
 <body>
-    <nav id="main_nav" class="navbar navbar-expand-lg navbar-light bg-white shadow">
+    <nav id="main_nav" class="navbar navbar-expand-lg navbar-light bg-white shadow ">
         <div class="container d-flex justify-content-between align-items-center">
             <a class="navbar-brand h1" href="/">
                 <i class='bx bx-buildings bx-sm text-dark'></i>
@@ -39,18 +39,54 @@
                         <li class="nav-item">
                             <a class="nav-link btn-outline-primary rounded-pill px-3" href="/visits">Wizyty</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="/account">Konto</a>
-                        </li>
+                        {{$role}}
+                        @auth
+                        @if ($role=="Admin")
                         <li class="nav-item">
                             <a class="nav-link btn-outline-primary rounded-pill px-3" href="/manage">Recepcja</a>
                         </li>
+                        @endif
+                        
+                        @endauth 
                     </ul>
                 </div>
                 <div class="navbar align-self-center d-flex">
                     <a class="nav-link" href="#"><i class='bx bx-bell bx-sm bx-tada-hover text-primary'></i></a>
-                    <a class="nav-link" href="#"><i class='bx bx-cog bx-sm text-primary'></i></a>
-                    <a class="nav-link" href="/login"><i class='bx bx-user-circle bx-sm text-primary'></i></a>
+
+                <div class="dropdown">
+                    <a class="bx bx-user-circle bx-sm text-primary" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark" aria-labelledby="dropdownMenu2">
+                        @guest 
+                        <li>
+                            <a class="dropdown-item btn-outline-primary rounded-pill px-3" href="/login">Logowanie/Rejestracja</a>
+                        </li>
+                        @else
+                        <li> 
+                           <div class="dropdown-item  btn-outline-primary rounded-pill" > Witaj {{auth()->user()->name}} {{auth()->user()->surname}}! </div>
+                        </li>
+                        <li>
+                            <a class="dropdown-item btn-outline-primary rounded-pill px-3" href="/account">Konto</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item  btn-outline-primary rounded-pill" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            {{ __('Wyloguj się') }}</a><form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">@csrf</form>
+                        </li>
+
+                        @endauth
+
+                        <li><a class="dropdown-item btn-outline-primary rounded-pill px-3" href="/login">coś innego</a></li>
+                    @auth
+                        <li class="nav-item">
+                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="/manage">Recepcja</a>
+                        </li>    
+                    @endauth
+                    </ul>
+                </div>
+    <!-- Links -->
+  
+
+  <!-- Navbar -->
                 </div>
             </div>
         </div>
@@ -187,6 +223,33 @@
 <script src="assets/js/templatemo.js"></script>
 <!-- Custom -->
 <script src="assets/js/custom.js"></script>
+<!-- Bootstrap -->
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+<!-- Load jQuery require for isotope -->
+<script src="assets/js/jquery.min.js"></script>
+<!-- Isotope -->
+<script src="assets/js/isotope.pkgd.js"></script>
+<!-- Page Script -->
+<script>
+    $(window).load(function() {
+        // init Isotope
+        var $projects = $('.projects').isotope({
+            itemSelector: '.project',
+            layoutMode: 'fitRows'
+        });
+        $(".filter-btn").click(function() {
+            var data_filter = $(this).attr("data-filter");
+            $projects.isotope({
+                filter: data_filter
+            });
+            $(".filter-btn").removeClass("active");
+            $(".filter-btn").removeClass("shadow");
+            $(this).addClass("active");
+            $(this).addClass("shadow");
+            return false;
+        });
+    });
+</script>
 </body>
     
 </html>
