@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -57,7 +58,10 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        $user = User::where('id', Auth::user()->id)
+        ->select('id', 'name', 'surname', 'email', 'phone', 'pesel')
+        ->first();
+        return view('users.edit', ['user'=>$user]);
     }
 
     /**
@@ -69,7 +73,14 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $user = User::find(request('id'));
+        $user->pesel = request('pesel');
+        $user->email = request('email');
+        $user->name = request('name');
+        $user->surname = request('surname');
+        $user->phone = request('phone');
+        $user->save($this->validator());
+        return redirect('/user-data');
     }
 
     /**
@@ -81,5 +92,15 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         //
+    }
+
+    protected function validator(){
+        return request()->validate([
+            'name' => 'required|string|max:255',
+            'surname' => 'required|string|max:255',
+            'phone' => 'max:9|min:9',  
+            'pesel' => 'max:11|min:11',
+            'email' => 'required|string|email|max:255',
+        ]);
     }
 }

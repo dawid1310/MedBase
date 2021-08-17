@@ -56,7 +56,8 @@ Route::get('/manage', [App\Http\Controllers\ManagerController::class, 'index']);
 
 
 //UserController
-Route::get('/user-data', [App\Http\Controllers\UserController::class, 'index']);
+Route::get('/user-data', [App\Http\Controllers\UserController::class, 'edit']);
+
 
 //VisitsController
 Route::get('/visits/create', [App\Http\Controllers\VisitsController::class, 'create']);
@@ -90,7 +91,7 @@ Route::post('/request-email', [App\Http\Controllers\EmailController::class, 'doc
 
 
 //UserController
-
+Route::post('/updateUser', [App\Http\Controllers\UserController::class, 'update']);
 
 //VisitsController
 
