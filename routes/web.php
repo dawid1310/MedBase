@@ -26,7 +26,6 @@ Auth::routes();
 
 //AcountController
 Route::get('account',  [App\Http\Controllers\AccountController::class, 'index']);
-Route::get('account/a',  [App\Http\Controllers\AccountController::class, 'index']);
 
 //DoctorController
 Route::get('/doctors', [App\Http\Controllers\DoctorController::class, 'index']);
@@ -51,6 +50,9 @@ Route::get('/manage', [App\Http\Controllers\ManagerController::class, 'index']);
 
 //PrescryptinsController
 
+//ScheduleController
+Route::get('/schedule', [App\Http\Controllers\ScheduleController::class, 'index']);
+Route::get('/schedule-create', [App\Http\Controllers\ScheduleController::class, 'create']);
 
 //SpecializationController
 
@@ -85,6 +87,9 @@ Route::post('/request-email', [App\Http\Controllers\EmailController::class, 'doc
 
 
 //PrescryptinsController
+
+//ScheduleController
+Route::post('/storeSchedule', [App\Http\Controllers\ScheduleController::class, 'store']);
 
 
 //SpecializationController

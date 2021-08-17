@@ -28,4 +28,14 @@ class Doctor extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    /**
+     * Get all of the schedules for the Doctor
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function schedules(): HasMany
+    {
+        return $this->hasMany(Schedule::class);
+    }
 }

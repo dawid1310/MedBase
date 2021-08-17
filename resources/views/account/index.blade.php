@@ -21,7 +21,7 @@
 
                 <!-- Start Recent Work -->
                 <div class="col-xl-3 col-md-4 col-sm-6 project branding">
-                    <a href="#" class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
+                    <a href="setSchedule" class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
                         <img class="card-img" src="./assets/img/services-03.jpg" alt="Card image">
                         <div class="service-work-vertical card-img-overlay d-flex align-items-end">
                             <div class="service-work-content text-left text-light">
@@ -91,7 +91,7 @@
                 </div>
 
                 <div class="col-xl-3 col-md-4 col-sm-6 project ui graphic">
-                    <a href="#" class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
+                    <a href="schedule" class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
                         <img class="card-img" src="./assets/img/services-04.jpg" alt="Card image">
                         <div class="service-work-vertical card-img-overlay d-flex align-items-end">
                             <div class="service-work-content text-left text-light">
