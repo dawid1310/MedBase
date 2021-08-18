@@ -10,12 +10,14 @@
     <!-- Load Require CSS -->
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font CSS -->
-    <link href="assets/css/boxicon.min.css" rel="stylesheet">
+    <link href="{{asset('./assets/css/boxicon.min.css')}}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <!-- Load Tempalte CSS -->
     <link rel="stylesheet" href="/assets/css/templatemo.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/assets/css/custom.css">
+    <link rel="stylesheet" href="css/mdb.min.css" />
+    @yield('css')
 </head>
 <body>
     <nav id="main_nav" class="navbar navbar-expand-lg navbar-light bg-white shadow ">
@@ -250,6 +252,11 @@
         });
     });
 </script>
+
+    <!-- MDB -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <!-- Custom scripts -->
+    <script type="text/javascript"></script>
 </body>
     
 </html>

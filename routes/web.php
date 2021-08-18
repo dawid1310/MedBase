@@ -32,10 +32,11 @@ Route::get('/doctors', [App\Http\Controllers\DoctorController::class, 'index']);
 Route::get('/doctors/{id}', [App\Http\Controllers\DoctorController::class, 'show']);
 Route::get('/doctors/{id}/edit', [App\Http\Controllers\DoctorController::class, 'edit']);
 Route::get('/doctors/create', [App\Http\Controllers\DoctorController::class, 'create']);
-
+Route::get('/search', [App\Http\Controllers\DoctorController::class, 'search']);
 //DoctorsRegistrationController
 Route::get('/doctors-registration', [App\Http\Controllers\DoctorsRegistrationController::class, 'create']);
 Route::get('/all-requests', [App\Http\Controllers\DoctorsRegistrationController::class, 'show']);
+
 
 //EmailController
 
