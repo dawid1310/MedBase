@@ -184,39 +184,24 @@
                 <column>
                     <h2>Ocena: {{ $doctor->rating }}</h2>
                 </column>
-                <form action="/doctors/{{ $doctor->id }}/edit" method="get">
-                    <input type="submit" value="Modyfikuj">
-                </form>
-
             </row>
 
-            @foreach ($visits as $visit)
-                <div id="login-container">
-                    <div class="profile-img"></div>
-                    <h1>
-                        Maddie
-                    </h1>
-                    <div class="description">
-                        Maddie is a front end web developer in New York. She has worked in the field for 10 years now. Check
-                        out her projects in the links below. She is available for hire as well.
-                    </div>
-                    <div class="social">
-                        <a>GitHub</a>
-                        <a>Twitter</a>
-                        <a>LinkedIn</a>
-                    </div>
-                    <button>Hire Me</button>
-                    <footer>
-                        <div class="likes">
-                            <p><i class='fa fa-heart'></i></p>
-                            <p>1.5K</p>
-                        </div>
-                        <div class="projects">
-                            <p>Projects</p>
-                            <p>154</p>
-                        </div>
-                    </footer>
-                </div>
+            @foreach ($visits as $day)
+
+                <p>Noble{{ $day['date'] }}</p>
+                @foreach ($day['visits'] as $visit)
+                    @if (!$visit['occupied'])
+                        <form action="/storeVisit" method="post">
+                            @csrf
+                            <input type="hidden" name="doctor" value={{$doctor->id}}>
+                            <input type="hidden" name="day" value={{$day['date']}}>
+                            <input type="hidden" name="time" value={{$visit['time']}}>
+                            <button type="submit">{{$visit['time']}}</button>
+                        </form>
+                        <p>Wang{{ $visit['time'] }}</p>
+                    @endif
+                @endforeach
+
             @endforeach
         </table>
     </div>

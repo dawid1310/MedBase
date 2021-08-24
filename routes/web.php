@@ -33,6 +33,7 @@ Route::get('/doctors/{id}', [App\Http\Controllers\DoctorController::class, 'show
 Route::get('/doctors/{id}/edit', [App\Http\Controllers\DoctorController::class, 'edit']);
 Route::get('/doctors/create', [App\Http\Controllers\DoctorController::class, 'create']);
 Route::get('/search', [App\Http\Controllers\DoctorController::class, 'search']);
+
 //DoctorsRegistrationController
 Route::get('/doctors-registration', [App\Http\Controllers\DoctorsRegistrationController::class, 'create']);
 Route::get('/all-requests', [App\Http\Controllers\DoctorsRegistrationController::class, 'show']);
@@ -65,6 +66,7 @@ Route::get('/user-data', [App\Http\Controllers\UserController::class, 'edit']);
 //VisitsController
 Route::get('/visits/create', [App\Http\Controllers\VisitsController::class, 'create']);
 Route::get('/visits', [App\Http\Controllers\VisitsController::class, 'index']);
+Route::get('/visits/show', [App\Http\Controllers\VisitsController::class, 'show']);
 
 
 
@@ -100,4 +102,5 @@ Route::post('/storeSchedule', [App\Http\Controllers\ScheduleController::class, '
 Route::post('/updateUser', [App\Http\Controllers\UserController::class, 'update']);
 
 //VisitsController
+Route::post('/storeVisit', [App\Http\Controllers\VisitsController::class, 'store']);
 

@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Visit extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'doctor_id',
+        'user_id',
+        'day',
+        'time'
+    ];
+
 }

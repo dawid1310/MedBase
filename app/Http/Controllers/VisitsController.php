@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Visit;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Carbon;
 class VisitsController extends Controller
 {
     /**
@@ -24,8 +26,8 @@ class VisitsController extends Controller
      */
     public function create()
     {
-        return view('visits.create');    
-        
+        return view('visits.create');
+
     }
 
     /**
@@ -36,7 +38,18 @@ class VisitsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $visit = new Visit();
+        if (!Auth::user()) {
+            return redirect('/login');
+        }
+
+        $visit->user_id = Auth::user()->id;
+        $visit->doctor_id = request('doctor');
+        $visit->day = request('day');
+        $visit->time = request('time');
+        $visit->save();
+        return redirect('/doctors/' . $visit->doctor_id);
+
     }
 
     /**
@@ -47,7 +60,22 @@ class VisitsController extends Controller
      */
     public function show(Visit $visit)
     {
-        //
+
+        if (!Auth::user()) {
+            return redirect('/login');
+        }
+        $id = Auth::user()->id;
+
+        $visits = DB::table('visits')
+            ->join('doctors', 'doctors.id', 'visits.doctor_id')
+            ->join('users', 'users.id', 'doctors.user_id')
+            ->join('specializations', 'specializations.id', 'doctors.specialization_id')
+            ->where('visits.user_id', $id)
+            ->where('visits.day', $_GET['operator'], Carbon::now("Europe/Warsaw")->toDateString())
+            ->select('visits.day', 'visits.time', 'users.name', 'users.surname', 'specializations.specialization')
+            ->get();
+        //dd($visits);
+        return view('visits.show', ['visits' => $visits]);
     }
 
     /**

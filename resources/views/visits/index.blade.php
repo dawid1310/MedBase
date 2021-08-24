@@ -42,24 +42,37 @@
 
                         <!-- Start Recent Work -->
             <div class="col-md-4 mb-3">
-                <a href="#" class="recent-work card border-0 shadow-lg overflow-hidden">
+                <a href="/" class="recent-work card border-0 shadow-lg overflow-hidden">
                     <img class="recent-work-img card-img" src="./assets/img/recent-work-02.jpg" alt="Card image">
                     <div class="recent-work-vertical card-img-overlay d-flex align-items-end">
                         <div class="recent-work-content text-start mb-3 ml-3 text-dark">
-                            <h3 class="card-title light-300">Zamów zwolnienie lub receptę</h3>
+                            <h3 class="card-title light-300">Zamów zwolnienie</h3>
                             <p class="card-text">Psum officia anim id est laborum.</p>
                         </div>
                     </div>
                 </a>
             </div><!-- End Recent Work -->
 
-            <!-- Start Recent Work -->
             <div class="col-md-4 mb-3">
                 <a href="#" class="recent-work card border-0 shadow-lg overflow-hidden">
+                    <img class="recent-work-img card-img" src="./assets/img/recent-work-02.jpg" alt="Card image">
+                    <div class="recent-work-vertical card-img-overlay d-flex align-items-end">
+                        <div class="recent-work-content text-start mb-3 ml-3 text-dark">
+                            <h3 class="card-title light-300">Zamów receptę</h3>
+                            <p class="card-text">Psum officia anim id est laborum.</p>
+                        </div>
+                    </div>
+                </a>
+            </div><!-- End Recent Work -->
+
+
+            <!-- Start Recent Work -->
+            <div class="col-md-4 mb-3">
+                <a href="visits/show?operator=>=" class="recent-work card border-0 shadow-lg overflow-hidden">
                     <img class="recent-work-img card-img" src="./assets/img/recent-work-03.jpg" alt="Card image">
                     <div class="recent-work-vertical card-img-overlay d-flex align-items-end">
                         <div class="recent-work-content text-start mb-3 ml-3 text-dark">
-                            <h3 class="card-title light-300">Sprawdź swoją historię wizyt</h3>
+                            <h3 class="card-title light-300">Sprawdż kalendarz nadchodzących wizyt</h3>
                             <p class="card-text">Sum dolor sit consencutur</p>
                         </div>
                     </div>
@@ -68,11 +81,11 @@
 
             <!-- Start Recent Work -->
             <div class="col-md-4 mb-3">
-                <a href="#" class="recent-work card border-0 shadow-lg overflow-hidden">
+                <a href="visits/show?operator=<" class="recent-work card border-0 shadow-lg overflow-hidden">
                     <img class="recent-work-img card-img" src="./assets/img/recent-work-04.jpg" alt="Card image">
                     <div class="recent-work-vertical card-img-overlay d-flex align-items-end">
                         <div class="recent-work-content text-start mb-3 ml-3 text-dark">
-                            <h3 class="card-title light-300">Sprawdż kalendarz nadchodzących wizyt</h3>
+                            <h3 class="card-title light-300">Sprawdź swoją historię wizyt</h3>
                             <p class="card-text">Lorem ipsum dolor sit amet</p>
                         </div>
                     </div>

@@ -64,7 +64,12 @@ class ScheduleController extends Controller
      */
     public function show($id)
     {
-        //
+        $schedule = DB::table('schedules')
+        ->select('start', 'end', 'day')
+        ->where('doctor_id', $id)
+        ->get();
+        dd('szlachetny korzeń');
+        return $schedule;
     }
 
     /**
