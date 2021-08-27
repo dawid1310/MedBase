@@ -27,7 +27,8 @@ class DoctorController extends Controller
         $add = 0;
         $day = 0;
         $curentDay = Carbon::now()->addDay($add)->dayOfWeek;
-
+        $days = [];
+        $visits = [];
         $weekDays = [
             0 => 'Sun',
             1 => 'Mon',
@@ -91,7 +92,7 @@ class DoctorController extends Controller
                     $startArray[1] = '00';
                 }
 
-                if((intval($startArray[0].$startArray[1])+10) > intval($endArray[0].$endArray[1])){
+                if ((intval($startArray[0] . $startArray[1]) + 10) > intval($endArray[0] . $endArray[1])) {
                     $curentDay++;
                     $add++;
                     continue;

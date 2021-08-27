@@ -9,6 +9,12 @@ class Schedule extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'doctor_id',
+        'day',
+        'start',
+        'end'
+    ];
     /**
      * Get the Schedule that owns the schedule
      *

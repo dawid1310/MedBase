@@ -14,6 +14,12 @@ class Specialization extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
+
+    protected $fillable = [
+        'specialization',
+        'specification'
+    ];
+
     public function doctors(): HasMany
     {
         return $this->hasMany(Doctor::class);

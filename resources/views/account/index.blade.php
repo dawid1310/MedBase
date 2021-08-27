@@ -35,7 +35,7 @@
 
                 <!-- Start Recent Work -->
                 <div class="col-xl-3 col-md-4 col-sm-6 project ui graphic">
-                    <a href="#" class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
+                    <a href="/treatment" class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
                         <img class="card-img" src="./assets/img/services-04.jpg" alt="Card image">
                         <div class="service-work-vertical card-img-overlay d-flex align-items-end">
                             <div class="service-work-content text-left text-light">
@@ -50,13 +50,12 @@
         @elseif($role=="Doctor")
                 <!-- Start Recent Work -->
                 <div class="col-xl-3 col-md-4 col-sm-6 project ui graphic">
-                    <a href="#" class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
+                    <a href="/treatment" class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
                         <img class="card-img" src="./assets/img/services-02.jpg" alt="Card image">
                         <div class="service-work-vertical card-img-overlay d-flex align-items-end">
                             <div class="service-work-content text-left text-light">
-                                <span class="btn btn-outline-light rounded-pill mb-lg-3 px-lg-4 light-300">Dane
-                                    pacjenta</span>
-                                <p class="card-text">Aktualizacja i modyfikacja danych pacjenta</p>
+                                <span class="btn btn-outline-light rounded-pill mb-lg-3 px-lg-4 light-300">Prowadzone przypadki</span>
+                                <p class="card-text">Dodawanie nowych przypadków, modyfikacja prowadzonych oraz przeglądanie wszystkich przypadków</p>
                             </div>
                         </div>
                     </a>

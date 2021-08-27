@@ -19,6 +19,8 @@ class CreateVisitsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->date('day');
             $table->time('time');
+            $table->unsignedBigInteger('visit_type_id')->nullable();
+            $table->unsignedBigInteger('treatment_id')->nullable();
             $table->timestamps();
 
             $table->foreign('doctor_id')
@@ -29,6 +31,16 @@ class CreateVisitsTable extends Migration
             $table->foreign('user_id')
             ->references('id')
             ->on('users')
+            ->onDelete('cascade');
+
+            $table->foreign('visit_type_id')
+            ->references('id')
+            ->on('visit_types')
+            ->onDelete('cascade');
+
+            $table->foreign('treatment_id')
+            ->references('id')
+            ->on('treatments')
             ->onDelete('cascade');
         });
     }

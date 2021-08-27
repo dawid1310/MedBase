@@ -13,7 +13,30 @@ class Visit extends Model
         'doctor_id',
         'user_id',
         'day',
-        'time'
+        'time',
+        'visit_type_id',
+        'treatment_id'
     ];
+
+    public function doctor(): BelongsTo
+    {
+        return $this->belongsTo(Doctor::class);
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function visitType(): BelongsTo
+    {
+        return $this->belongsTo(VisitType::class);
+    }
+
+    public function treatment(): BelongsTo
+    {
+        return $this->belongsTo(Treatment::class);
+    }
+    
 
 }

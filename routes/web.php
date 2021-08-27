@@ -35,7 +35,7 @@ Route::get('/doctors/create', [App\Http\Controllers\DoctorController::class, 'cr
 Route::get('/search', [App\Http\Controllers\DoctorController::class, 'search']);
 
 //DoctorsRegistrationController
-Route::get('/doctors-registration', [App\Http\Controllers\DoctorsRegistrationController::class, 'create']);
+Route::get('/doctors/registration', [App\Http\Controllers\DoctorsRegistrationController::class, 'create']);
 Route::get('/all-requests', [App\Http\Controllers\DoctorsRegistrationController::class, 'show']);
 
 
@@ -47,20 +47,26 @@ Route::get('/home', [App\Http\Controllers\HomeController::class]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //ManagerCoontroller
-Route::get('/manage-doctors', [App\Http\Controllers\ManagerController::class, 'doctors']);
+Route::get('/manage/doctors', [App\Http\Controllers\ManagerController::class, 'doctors']);
 Route::get('/manage', [App\Http\Controllers\ManagerController::class, 'index']);
 
 //PrescryptinsController
 
 //ScheduleController
 Route::get('/schedule', [App\Http\Controllers\ScheduleController::class, 'index']);
-Route::get('/schedule-create', [App\Http\Controllers\ScheduleController::class, 'create']);
+Route::get('/schedule/create', [App\Http\Controllers\ScheduleController::class, 'create']);
 
 //SpecializationController
 
 
+//TreatmentController
+Route::get('/treatment', [App\Http\Controllers\TreatmentController::class, 'menu']);
+Route::get('/treatment/create', [App\Http\Controllers\TreatmentController::class, 'create']);
+Route::get('/treatment/current', [App\Http\Controllers\TreatmentController::class, 'index']);
+Route::get('/treatment/history', [App\Http\Controllers\TreatmentController::class, 'index']);
+
 //UserController
-Route::get('/user-data', [App\Http\Controllers\UserController::class, 'edit']);
+Route::get('/user/data', [App\Http\Controllers\UserController::class, 'edit']);
 
 
 //VisitsController
@@ -81,7 +87,7 @@ Route::post('/doctors', 'App\Http\Controllers\DoctorController@store');
 Route::post('/add-registration-request', [App\Http\Controllers\DoctorsRegistrationController::class, 'store']);
 
 //EmailController
-Route::post('/request-email', [App\Http\Controllers\EmailController::class, 'doctorsRequest']);
+Route::post('/request/email', [App\Http\Controllers\EmailController::class, 'doctorsRequest']);
 
 //HomeController
 
@@ -96,6 +102,9 @@ Route::post('/storeSchedule', [App\Http\Controllers\ScheduleController::class, '
 
 
 //SpecializationController
+
+
+//TreatmentController
 
 
 //UserController

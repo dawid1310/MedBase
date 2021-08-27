@@ -8,6 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Doctor extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'user_id', 
+        'specialization_id', 
+        'informations'
+    ];
     
     /**
      * Get the specialization that owns the Doctor

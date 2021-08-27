@@ -181,9 +181,6 @@
                 <column>
                     <h2>Informacje: {{ $doctor->informations }}</h2>
                 </column>
-                <column>
-                    <h2>Ocena: {{ $doctor->rating }}</h2>
-                </column>
             </row>
 
             @foreach ($visits as $day)

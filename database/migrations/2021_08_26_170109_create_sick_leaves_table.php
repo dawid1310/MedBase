@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDoctorsTable extends Migration
+class CreateSickLeavesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,23 @@ class CreateDoctorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('doctors', function (Blueprint $table) {
+        Schema::create('sick_leaves', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('specialization_id');
-            $table->string('informations');
+            $table->date('start');
+            $table->date('end');
+            $table->longText('reason');
+            $table->unsignedBigInteger('visit_id');
+            $table->unsignedBigInteger('disease_id');
             $table->timestamps();
-
-            $table->foreign('user_id')
+            
+            $table->foreign('visit_id')
             ->references('id')
-            ->on('users')
+            ->on('visits')
             ->onDelete('cascade');
 
-            $table->foreign('specialization_id')
+            $table->foreign('disease_id')
             ->references('id')
-            ->on('specializations')
+            ->on('diseases')
             ->onDelete('cascade');
         });
     }
@@ -39,6 +41,6 @@ class CreateDoctorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('doctors');
+        Schema::dropIfExists('sick_leaves');
     }
 }
