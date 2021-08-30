@@ -94,15 +94,15 @@ class DiseaseSeeder extends Seeder
             ],
             [
                 'name' => 'Autyzm',
-                'danger' => 'Przypadłość, która zaliczana jest do grupy symptomów zwanych wycofaniem, czyli unikaniem kontaktu ze światem zewnętrznym – z ludźmi i otoczeniem.',
-                'description' => 'mid',
+                'danger' => 'mid',
+                'description' => 'Przypadłość, która zaliczana jest do grupy symptomów zwanych wycofaniem, czyli unikaniem kontaktu ze światem zewnętrznym – z ludźmi i otoczeniem.',
                 'specialization_id' => 6
             
             ],
             [
                 'name' => 'Odmrożenia',
-                'danger' => 'Zmiany miejscowe wywołane działaniem niskiej temperatury, głównie powietrza atmosferycznego.',
-                'description' => 'mid',
+                'danger' => 'mid',
+                'description' => 'Zmiany miejscowe wywołane działaniem niskiej temperatury, głównie powietrza atmosferycznego.',
                 'specialization_id' => 7
             
             ],

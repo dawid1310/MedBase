@@ -22,7 +22,11 @@ class RatingFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'rate'  => $this->faker->numberBetween($min = 1, $max = 5),
+
+            'doctor_id' => $this->faker->numberBetween($min = 1, $max = 9),
+
+            'user_id' => $this->faker->numberBetween($min = 1, $max = 33)
         ];
     }
 }
