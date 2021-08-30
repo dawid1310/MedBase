@@ -11,7 +11,7 @@ class File extends Model
 
     protected $fillable = [
         'name',
-        'file',
+        'file_path',
         'description',
         'treatment_id'
     ];

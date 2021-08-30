@@ -15,14 +15,7 @@ class ScheduleController extends Controller
      */
     public function index()
     {
-        $schedule = DB::table('schedules')
-            ->join('doctors', 'schedules.doctor_id', '=', 'doctors.id')
-            ->select('schedules.day', 'schedules.start', 'schedules.end')
-            ->get();
-        if($schedule->isEmpty())
-            return view('schedule.create');
-        else
-            return view('schedule.index');
+
             
     }
 
@@ -33,7 +26,14 @@ class ScheduleController extends Controller
      */
     public function create()
     {
-        //
+        $schedule = DB::table('schedules')
+        ->join('doctors', 'schedules.doctor_id', '=', 'doctors.id')
+        ->select('schedules.day', 'schedules.start', 'schedules.end')
+        ->get();
+        if(!$schedule->isEmpty())
+            return view('schedule.create');
+        else
+            return view('schedule.index');
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 
 class AccountController extends Controller
 {
@@ -14,6 +15,7 @@ class AccountController extends Controller
      */
     public function index()
     {
+        $value = Cookie::get('docid');
         $role = Auth::user()->account_type;
         return view('account.index', ['role'=>$role]);
     }

@@ -16,6 +16,8 @@ class User extends Authenticatable
      *
      * @var array
      */
+    public $docId = 0;
+
     protected $fillable = [
         'name',
         'surname',

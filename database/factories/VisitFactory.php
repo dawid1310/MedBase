@@ -26,11 +26,14 @@ class VisitFactory extends Factory
 
             'user_id' => $this->faker->numberBetween($min = 1, $max = 33),
 
-            'day'  => $this->faker->date($format = 'Y-m-d', $min = '2021-07-01', $max = '2021-09-30'),
+            'day'  => $this->faker->dateTimeBetween('-1 month', '+1 month'),
 
-            'time'  => $this->faker->time($format = 'H:i', $min = '08:00', $max = '16:00'),
+            'time'  => $this->faker->randomElement($array = array ('08:00','08:20','08:40', '09:00', '09:20', '09:40', '10:00')),
 
-            'visit_type_id'  => $this->faker->numberBetween($min = 1, $max = 4)
+            'visit_type_id'  => $this->faker->numberBetween($min = 1, $max = 4),
+
+            'patient_desc'  => $this->faker->text($maxNbChars = 200)
+
         ];
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\File;
 
 class FileController extends Controller
 {
@@ -34,7 +35,27 @@ class FileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'file' => 'required|mimes:csv,txt,xlx,xls,pdf|max:2048',
+        ]);
+
+        $file = new File;
+
+        if ($request->file()) {
+            $fileName = time() . '_' . $request->file->getClientOriginalName();
+            $filePath = $request->file('file')->storeAs('uploads', $fileName, 'public');
+
+            $file->name = time() .'_'. $request->file->getClientOriginalName();
+            $file->file_path = '/storage/' . $filePath;
+            $file->description = request('description');
+            $file->treatment_id	 = request('treatment_id');
+            $file->save();
+
+            return back()
+            ->with('success','File has been uploaded.')
+            ->with('file', $fileName);
+    
+        }
     }
 
     /**

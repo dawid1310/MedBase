@@ -21,6 +21,8 @@ class CreateVisitsTable extends Migration
             $table->time('time');
             $table->unsignedBigInteger('visit_type_id')->nullable();
             $table->unsignedBigInteger('treatment_id')->nullable();
+            $table->longText('patient_desc')->nullable();
+            $table->longText('doctor_desc')->nullable();
             $table->timestamps();
 
             $table->foreign('doctor_id')

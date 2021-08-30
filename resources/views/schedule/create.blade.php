@@ -37,9 +37,6 @@
     </div>
 
 </section>
-
-
-
         <form action="storeSchedule" method="post">
             @csrf
             <div>
@@ -55,9 +52,9 @@
                 <input type="time" name="endTue" id="endTue"/>
             </div>
             <div>
-                <label for="startWed" class="form-label">Początek przyjęć w śreodę</label>
+                <label for="startWed" class="form-label">Początek przyjęć w środę</label>
                 <input type="time" name="startWed" id="startWed"/>
-                <label for="endMWed" class="form-label">Koniec przyjęć w śreodę</label>
+                <label for="endMWed" class="form-label">Koniec przyjęć w środę</label>
                 <input type="time" name="endWed" id="endMWed"/>
             </div>
             <div>

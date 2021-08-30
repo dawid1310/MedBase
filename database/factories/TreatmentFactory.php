@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Trestments;
+use App\Models\Treatment;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class TreatmentsFsctoryFactory extends Factory
+class TreatmentFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Trestments::class;
+    protected $model = Treatment::class;
 
     /**
      * Define the model's default state.
@@ -22,7 +22,7 @@ class TreatmentsFsctoryFactory extends Factory
     public function definition()
     {
         return [
-            'status' => $this->faker->randomElement($array = array ('','Wyleczony','Zakonczony')),
+            'status' => $this->faker->randomElement($array = array ('Leczenie','Wyleczony','Zakonczony')),
 
             'disease_id' => $this->faker->numberBetween($min = 1, $max = 32)
         ];

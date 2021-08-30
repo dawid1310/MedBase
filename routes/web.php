@@ -62,8 +62,7 @@ Route::get('/schedule/create', [App\Http\Controllers\ScheduleController::class, 
 //TreatmentController
 Route::get('/treatment', [App\Http\Controllers\TreatmentController::class, 'menu']);
 Route::get('/treatment/create', [App\Http\Controllers\TreatmentController::class, 'create']);
-Route::get('/treatment/current', [App\Http\Controllers\TreatmentController::class, 'index']);
-Route::get('/treatment/history', [App\Http\Controllers\TreatmentController::class, 'index']);
+Route::get('/treatment/{id}', [App\Http\Controllers\TreatmentController::class, 'index']);
 
 //UserController
 Route::get('/user/data', [App\Http\Controllers\UserController::class, 'edit']);
@@ -73,6 +72,8 @@ Route::get('/user/data', [App\Http\Controllers\UserController::class, 'edit']);
 Route::get('/visits/create', [App\Http\Controllers\VisitsController::class, 'create']);
 Route::get('/visits', [App\Http\Controllers\VisitsController::class, 'index']);
 Route::get('/visits/show', [App\Http\Controllers\VisitsController::class, 'show']);
+Route::get('/visits/{id}/show', [App\Http\Controllers\VisitsController::class, 'show']);
+
 
 
 
@@ -88,6 +89,9 @@ Route::post('/add-registration-request', [App\Http\Controllers\DoctorsRegistrati
 
 //EmailController
 Route::post('/request/email', [App\Http\Controllers\EmailController::class, 'doctorsRequest']);
+
+//FileController
+Route::post('/file/store', [App\Http\Controllers\FileController::class, 'store']);
 
 //HomeController
 
@@ -105,7 +109,7 @@ Route::post('/storeSchedule', [App\Http\Controllers\ScheduleController::class, '
 
 
 //TreatmentController
-
+Route::post('/treatment/store', [App\Http\Controllers\TreatmentController::class, 'store']);
 
 //UserController
 Route::post('/updateUser', [App\Http\Controllers\UserController::class, 'update']);
