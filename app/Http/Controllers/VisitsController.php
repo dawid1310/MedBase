@@ -27,7 +27,22 @@ class VisitsController extends Controller
      */
     public function create()
     {
-        return view('visits.create');
+
+        if (!Auth::user()) {
+            return redirect('/login');
+        }
+        $visit = [
+            'doctor_id' => request('doctor'),
+            'day' => request('day'),
+            'time' => request('time'),
+        ];
+        $doctor = DB::table('users')
+            ->join('doctors', 'doctors.user_id', 'users.id')
+            ->join('specializations', 'doctors.specialization_id', 'specializations.id')
+            ->where('doctors.id', '=', $visit['doctor_id'])
+            ->select('users.name', 'users.surname', 'specializations.specialization')
+            ->first();
+        return view('visits.create', ['visit' => $visit, 'doctor' => $doctor]);
 
     }
 
@@ -45,11 +60,13 @@ class VisitsController extends Controller
         }
 
         $visit->user_id = Auth::user()->id;
-        $visit->doctor_id = request('doctor');
+        $visit->doctor_id = request('doctor_id');
         $visit->day = request('day');
         $visit->time = request('time');
+        $visit->visit_type_id = request('visit_type_id');
+        $visit->patient_desc = request('patient_desc');
         $visit->save();
-        return redirect('/doctors/' . $visit->doctor_id);
+        return redirect('visits/show?operator=>=');
 
     }
 
@@ -92,6 +109,33 @@ class VisitsController extends Controller
 
     }
 
+    public function indexRz(Request $request)
+    {
+
+        $action = [
+            "prescryptions"=>1,
+            "sick_leaves"=>2
+        ];
+        $dicid = $request->cookie('docid');
+        $url = last(request()->segments());
+        if (Auth::user()->account_type == 'Doctor') {
+            $visits = DB::table('visits')
+            ->join('users', 'visits.user_id', 'users.id')
+            ->where('visits.visit_type_id', '=', $action[$url])
+            ->where('visits.doctor_id', '=' , $dicid)
+            ->where('visits.day', '<', now())
+            ->where('done', '=', NULL)
+            ->select('visits.id', 'users.email', 'users.name', 'users.surname', 'visits.patient_desc', 'visits.day', 'visits.time')
+            ->get();
+
+
+            return view($url.'.create', ['visits' => $visits]);
+        } else {
+            return redirect('/login');
+        }
+
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -124,5 +168,10 @@ class VisitsController extends Controller
     public function destroy(Visit $visit)
     {
         //
+    }
+
+    public function showMenu()
+    {
+        return view('visits.menu');
     }
 }

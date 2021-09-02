@@ -7,6 +7,7 @@ use App\Models\Specialization;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
 
 class DoctorController extends Controller
@@ -17,9 +18,15 @@ class DoctorController extends Controller
         $doctors = DB::table('doctors')
             ->join('users', 'doctors.user_id', '=', 'users.id')
             ->join('specializations', 'doctors.specialization_id', '=', 'specializations.id')
-            ->select('doctors.*', 'specializations.specialization', 'specializations.specification', 'users.name')
+            ->select('doctors.*', 'specializations.specialization', 'specializations.specification', 'users.name', 'users.surname')
+            ->take(6)
             ->get();
-        return view('doctors', ['doctors' => $doctors]);
+
+        $specializations = DB::table('specializations')
+            ->select('id', 'specialization')
+            ->get();
+
+        return view('doctors.index', ['doctors' => $doctors, 'specializations' => $specializations]);
 
     }
     public function show($id)
@@ -42,7 +49,7 @@ class DoctorController extends Controller
             ->join('users', 'doctors.user_id', '=', 'users.id')
             ->join('specializations', 'doctors.specialization_id', '=', 'specializations.id')
             ->where('doctors.id', $id)
-            ->select('doctors.*', 'specializations.specialization', 'specializations.specification', 'users.name')
+            ->select('doctors.*', 'specializations.specialization', 'specializations.specification', 'users.name', 'users.surname')
             ->get();
 
         $tooday = DB::table('schedules')
@@ -202,6 +209,44 @@ class DoctorController extends Controller
         //dd($doctors);
         return view('doctors.search', ['doctors' => $doctors]);
 
+    }
+
+    public function history()
+    {
+        $docid = Cookie::get('docid');
+
+        $visits = DB::table('visits')
+            ->join('visit_types', 'visits.visit_type_id', '=', 'visit_types.id')
+            ->where('visits.doctor_id', $docid)
+            ->selectRaw('count(visits.id) as number_of_visits, visit_types.name')
+            ->groupBy('visit_types.name')
+            ->get();
+
+        $stats = [
+            'noV' => DB::table('visits')
+                ->where('doctor_id', $docid)
+                ->selectRaw('count(id) as number_of_visits')
+                ->first(),
+
+            'noP' => DB::table('prescriptions')
+                ->join('visits', 'prescriptions.visit_id', 'visits.id')
+                ->where('visits.doctor_id', $docid)
+                ->selectRaw('count(prescriptions.id) as noP')
+                ->first(),
+
+            'noSl' => DB::table('sick_leaves')
+                ->join('visits', 'sick_leaves.visit_id', 'visits.id')
+                ->where('visits.doctor_id', $docid)
+                ->selectRaw('count(sick_leaves.id) as noSl')
+                ->first(),
+
+            'noT' => DB::table('visits')
+                ->where('doctor_id', $docid)
+                ->count(DB::raw('distinct(treatment_id)'))
+        ];
+
+        dd($stats);
+        return view('doctors.history', ['doctors' => $doctors]);
     }
 
 }

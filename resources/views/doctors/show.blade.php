@@ -168,38 +168,41 @@
     </style>
 @endsection
 @section('content')
-    <div class='w-75 mx-auto'>
-        <table>
-            <row>
+    <div class='col-xl-8 col-md-10 col-sm-12 mx-auto'>
+   
 
-                <column>
-                    <h1>Doktor: {{ $doctor->name }}</h1>
-                </column>
-                <column>
-                    <h2>Specjalizacja: {{ $doctor->specialization }}, {{ $doctor->specification }}</h2>
-                </column>
-                <column>
-                    <h2>Informacje: {{ $doctor->informations }}</h2>
-                </column>
-            </row>
+            <div class="card mx-auto mt-4">
+                <img src="{{ asset('/assets/img/doctor.jpg') }}" alt="Avatar" style="width:30%" class="mx-auto">
+                <div class="container">
+                    <h4 class="text-center"><b>{{ $doctor->name }} {{ $doctor->surname }}</b></h4>
+                    <h6>Specjalizacja: {{ $doctor->specialization }}, {{ $doctor->specification }}</h6>
+                    <p>{{ $doctor->informations }}</p>
+                </div>
+            </div>
+            
 
             @foreach ($visits as $day)
-
-                <p>Noble{{ $day['date'] }}</p>
+            <div class="row ">
+                
+                <h6 class="pt-3">Data {{ $day['date'] }}:</h6>
+         
                 @foreach ($day['visits'] as $visit)
                     @if (!$visit['occupied'])
-                        <form action="/storeVisit" method="post">
+                    <div class="col-xl-1 col-md-2 col-sm-4 col-6  text-center">
+                        <form action="/visit/create" method="post">
                             @csrf
                             <input type="hidden" name="doctor" value={{$doctor->id}}>
                             <input type="hidden" name="day" value={{$day['date']}}>
                             <input type="hidden" name="time" value={{$visit['time']}}>
-                            <button type="submit">{{$visit['time']}}</button>
+                            <button type="submit" class="btn btn-primary mb-1">{{$visit['time']}}</button>
                         </form>
-                        <p>Wang{{ $visit['time'] }}</p>
+                    </div>
                     @endif
                 @endforeach
-
+            </div>
             @endforeach
-        </table>
+            
+
     </div>
+
 @endsection

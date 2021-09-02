@@ -7,7 +7,7 @@
 
                         <!-- Start Recent Work -->
                         <div class="col-xl-3 col-md-4 col-sm-6 project ui graphic">
-                            <a href="user-data"
+                            <a href="account/{{ Auth::user()->id }}"
                                 class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
                                 <img class="card-img" src="./assets/img/services-02.jpg" alt="Card image">
                                 <div class="service-work-vertical card-img-overlay d-flex align-items-end">
@@ -22,12 +22,13 @@
 
                         <!-- Start Recent Work -->
                         <div class="col-xl-3 col-md-4 col-sm-6 project branding">
-                            <a href="/treatment/index"
+                            <a href="/treatment/{{ Auth::user()->id }}"
                                 class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
                                 <img class="card-img" src="./assets/img/services-03.jpg" alt="Card image">
                                 <div class="service-work-vertical card-img-overlay d-flex align-items-end">
                                     <div class="service-work-content text-left text-light">
-                                        <span class="btn btn-outline-light rounded-pill mb-lg-3 px-lg-4 light-300">Moje terapie</span>
+                                        <span class="btn btn-outline-light rounded-pill mb-lg-3 px-lg-4 light-300">Moje
+                                            terapie</span>
                                         <p class="card-text">Historia wizyt oraz dokonanych transakcji</p>
                                     </div>
                                 </div>
@@ -51,7 +52,7 @@
 
                         <!-- Start Recent Work -->
                         <div class="col-xl-3 col-md-4 col-sm-6 project ui graphic">
-                            <a href="/treatment"
+                            <a href="/visits/show?operator=>="
                                 class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
                                 <img class="card-img" src="./assets/img/services-04.jpg" alt="Card image">
                                 <div class="service-work-vertical card-img-overlay d-flex align-items-end">
@@ -65,6 +66,20 @@
                         </div>
 
                     @elseif($role=="Doctor")
+                        <!-- Start Recent Work -->
+                        <div class="col-xl-3 col-md-4 col-sm-6 project ui graphic">
+                            <a href="/visits/menu"
+                                class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
+                                <img class="card-img" src="./assets/img/services-02.jpg" alt="Card image">
+                                <div class="service-work-vertical card-img-overlay d-flex align-items-end">
+                                    <div class="service-work-content text-left text-light">
+                                        <span class="btn btn-outline-light rounded-pill mb-lg-3 px-lg-4 light-300">Recepty i zwolnienia</span>
+                                        <p class="card-text">Wystawianie recept oraz zwolnień dla odbytych wizyt</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div><!-- End Recent Work -->
+
                         <!-- Start Recent Work -->
                         <div class="col-xl-3 col-md-4 col-sm-6 project ui graphic">
                             <a href="/treatment"
@@ -83,13 +98,13 @@
 
                         <!-- Start Recent Work -->
                         <div class="col-xl-3 col-md-4 col-sm-6 project branding">
-                            <a href="#" class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
+                            <a href="doctors/history" class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
                                 <img class="card-img" src="./assets/img/services-03.jpg" alt="Card image">
                                 <div class="service-work-vertical card-img-overlay d-flex align-items-end">
                                     <div class="service-work-content text-left text-light">
                                         <span class="btn btn-outline-light rounded-pill mb-lg-3 px-lg-4 light-300">Historia
                                             użytkowania</span>
-                                        <p class="card-text">Historia wizyt oraz dokonanych transakcji</p>
+                                        <p class="card-text">Historia wizyt oraz wystawionych recept i zwolnień</p>
                                     </div>
                                 </div>
                             </a>

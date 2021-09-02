@@ -17,19 +17,13 @@ class CreateSickLeavesTable extends Migration
             $table->id();
             $table->date('start');
             $table->date('end');
-            $table->longText('reason');
             $table->unsignedBigInteger('visit_id');
-            $table->unsignedBigInteger('disease_id');
+            $table->integer('code');
             $table->timestamps();
             
             $table->foreign('visit_id')
             ->references('id')
             ->on('visits')
-            ->onDelete('cascade');
-
-            $table->foreign('disease_id')
-            ->references('id')
-            ->on('diseases')
             ->onDelete('cascade');
         });
     }

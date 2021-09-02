@@ -19,28 +19,28 @@ class DiseaseSeeder extends Seeder
                 'name' => 'Krwiomocz',
                 'danger' => 'mid',
                 'description' => 'Obecność krwi w moczu, która najczęściej jest objawem nieprawidłowego funkcjonowania dróg moczowych.',
-                'specialization_id' => 1
+                'specialization_id' => 21
             
             ],
             [
                 'name' => 'Bezmocz',
                 'danger' => 'mid',
                 'description' => 'Schorzenie układu moczowego, które wskazuje na zaburzenie jego czynności. Bezmocz to stan, w którym pacjent oddaje poniżej 100 ml moczu na dobę.',
-                'specialization_id' => 1
+                'specialization_id' => 21
             
             ],
             [
                 'name' => 'Choroba wieńcowa',
                 'danger' => 'hi',
                 'description' => 'Choroba niedokrwienna serca, to zespół objawów, jakie zachodzą po niewystarczającym zaopatrzeniu komórek w tlen i substancje odżywcze.',
-                'specialization_id' => 2
+                'specialization_id' => 1
             
             ],
             [
                 'name' => 'Niewydolność krążenia',
                 'danger' => 'hi',
                 'description' => 'Dolegliwością układu krążenia, w której układ krążenia nie częściowo traci swoją zdolność do zaopatrywania organizmu i narządów w tlen i substancje odżywcze, co wiąże się z ich niedokrwieniem.',
-                'specialization_id' => 2
+                'specialization_id' => 1
             
             ],
             [

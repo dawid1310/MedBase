@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DiseaseController extends Controller
 {
@@ -13,7 +14,11 @@ class DiseaseController extends Controller
      */
     public function index()
     {
-        //
+        $diseases = DB::table('diseases')
+        ->select('name', 'id')
+        ->get();
+        //dd($diseases);
+        return view('diseases.index', ['diseases'=>$diseases]);
     }
 
     /**
@@ -45,7 +50,16 @@ class DiseaseController extends Controller
      */
     public function show($id)
     {
-        //
+        $disease = DB::table('diseases')
+        ->select('name', 'specialization_id', 'description')
+        ->where('id', '=', $id)
+        ->first();
+        $doctors = DB::table('doctors')
+        ->join('users', 'doctors.user_id', 'users.id')
+        ->where('doctors.specialization_id', '=', $disease->specialization_id)
+        ->select('users.name', 'users.surname', 'doctors.informations', 'doctors.id')
+        ->get();
+        return view('diseases.show', ['disease'=>$disease, 'doctors'=>$doctors]);
     }
 
     /**

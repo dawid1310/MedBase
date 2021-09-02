@@ -16,6 +16,36 @@ class ScheduleSeeder extends Seeder
     {
         $schedules = [
             [
+                'doctor_id' => 1,
+                'day' => 'Mon',
+                'start' => '08:00:00',
+                'end' => '16:00:00',
+            ],
+            [
+                'doctor_id' => 1,
+                'day' => 'Tue',
+                'start' => '08:00:00',
+                'end' => '16:00:00',
+            ],
+            [
+                'doctor_id' => 1,
+                'day' => 'Wed',
+                'start' => '08:00:00',
+                'end' => '16:00:00',
+            ],
+            [
+                'doctor_id' => 1,
+                'day' => 'Thu',
+                'start' => '08:00:00',
+                'end' => '16:00:00',
+            ],
+            [
+                'doctor_id' => 1,
+                'day' => 'Fri',
+                'start' => '08:00:00',
+                'end' => '16:00:00',
+            ],
+            [
                 'doctor_id' => 2,
                 'day' => 'Mon',
                 'start' => '08:00:00',

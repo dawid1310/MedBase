@@ -6,13 +6,19 @@ use App\Models\Treatment;
 use App\Models\Visit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
 
 class TreatmentController extends Controller
 {
     public function menu()
     {
-        return view('treatments/index');
+        if (Auth::user()->account_type == "User") {
+            return view('treatments/index');
+        } else {
+            return view('treatments/menu');
+        }
+
     }
     /**
      * Display a listing of the resource.
@@ -43,11 +49,35 @@ class TreatmentController extends Controller
         }
         if (Auth::user()->account_type == "Doctor") {
             $url = last(request()->segments());
+            $status;
             if ($url == 'current') {
-
+                $treatments = DB::table('treatments')
+                    ->join('diseases', 'treatments.disease_id', '=', 'diseases.id')
+                    ->join('visits', 'visits.treatment_id', '=', 'treatments.id')
+                    ->join('users', 'visits.user_id', '=', 'users.id')
+                    ->where('visits.doctor_id', '=', Cookie::get('docid'))
+                    ->where('treatments.status', '=', 'Leczenie')
+                    ->select('treatments.id', 'users.name', 'users.surname', 'diseases.name as disease')
+                    ->distinct()
+                    ->get();
+                $status = "Leczenie w trakcie";
             } elseif ($url == 'history') {
-
+                $treatments = DB::table('treatments')
+                    ->join('diseases', 'treatments.disease_id', '=', 'diseases.id')
+                    ->join('visits', 'visits.treatment_id', '=', 'treatments.id')
+                    ->join('users', 'visits.user_id', '=', 'users.id')
+                    ->where('visits.doctor_id', '=', Cookie::get('docid'))
+                    ->where(function ($query) {
+                        $query->where('treatments.status', '=', 'Zakonczony')
+                            ->orWhere('treatments.status', '=', 'Wyleczony');
+                    })
+                    ->select('treatments.id', 'users.name', 'users.surname', 'diseases.name as disease')
+                    ->distinct()
+                    ->get();
+                $status = "Przypadek zakończony";
             }
+
+            return view('treatments.index', ['treatments' => $treatments, 'status' => $status]);
         }
 
     }
@@ -122,7 +152,20 @@ class TreatmentController extends Controller
      */
     public function show($id)
     {
-        //
+        $treatment = DB::table('visits')
+        ->where('visits.treatment_id', $id)
+        ->select('visits.day', 'visits.time', 'visits.patient_desc', 'visits.doctor_desc')
+        ->get();
+
+        $user = DB::table('users')
+        ->join('visits', 'visits.user_id', 'users.id')
+        ->where('visits.treatment_id', $id)
+        ->select('users.name', 'users.surname')
+        ->first();
+
+        return view('treatments.show', ['treatment' => $treatment, 'user' => $user]);
+
+
     }
 
     /**

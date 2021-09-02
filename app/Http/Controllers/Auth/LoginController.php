@@ -27,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/account';
 
     /**
      * Create a new controller instance.
@@ -41,7 +41,7 @@ class LoginController extends Controller
 
     protected function authenticated()
     {
-        if(Auth::user()->account_type == 'doctor'){
+        if(Auth::user()->account_type == 'Doctor'){
         $docid = DB::table('doctors')
             ->join('users', 'doctors.user_id', '=', 'users.id')
             ->where('doctors.user_id', '=', Auth::user()->id)

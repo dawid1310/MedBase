@@ -23,10 +23,14 @@
     </style>
 @endsection
 @section('content')
+<div class="col-xl-10 col-md-10 col-sm-12 mx-auto">
+    <h1 class="text-center">dodaj jakis napis</h1>
+<div class="row gx-5 gx-sm-3 gx-lg-5 gy-lg-5 gy-3 pb-3 pt-4 ">
     @foreach ($doctors as $doctor)
-        <div style="width:50%">
+    <div class="col-xl-4 col-md-4 col-sm-6 project ui graphic branding">
+        
             <a href="/doctors/{{ $doctor->id }}">
-                <div class="card">
+                <div class="card w-100">
                     <img src="./assets/img/doctor.jpg" alt="Avatar" style="width:100%">
                     <div class="container">
                         <h3><b>{{ $doctor->name }} {{ $doctor->surname }} - {{ $doctor->specialization }}</b></h3>
@@ -34,7 +38,9 @@
                     </div>
                 </div>
             </a>
-        </div>
-
+       
+    </div>
     @endforeach
+    </div>
+</div>
 @endsection

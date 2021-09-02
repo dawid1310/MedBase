@@ -27,8 +27,14 @@ Auth::routes();
 //AcountController
 Route::get('account',  [App\Http\Controllers\AccountController::class, 'index']);
 
+
+//DiseaseController
+Route::get('/disease', [App\Http\Controllers\DiseaseController::class, 'index']);
+Route::get('/disease/{id}', [App\Http\Controllers\DiseaseController::class, 'show']);
+
 //DoctorController
 Route::get('/doctors', [App\Http\Controllers\DoctorController::class, 'index']);
+Route::get('/doctors/history', [App\Http\Controllers\DoctorController::class, 'history']);
 Route::get('/doctors/{id}', [App\Http\Controllers\DoctorController::class, 'show']);
 Route::get('/doctors/{id}/edit', [App\Http\Controllers\DoctorController::class, 'edit']);
 Route::get('/doctors/create', [App\Http\Controllers\DoctorController::class, 'create']);
@@ -43,14 +49,16 @@ Route::get('/all-requests', [App\Http\Controllers\DoctorsRegistrationController:
 
 
 //HomeController
+Route::get('/test', [App\Http\Controllers\HomeController::class, 'test']);
 Route::get('/home', [App\Http\Controllers\HomeController::class]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/about', [App\Http\Controllers\HomeController::class, 'about']);
 
 //ManagerCoontroller
 Route::get('/manage/doctors', [App\Http\Controllers\ManagerController::class, 'doctors']);
 Route::get('/manage', [App\Http\Controllers\ManagerController::class, 'index']);
 
-//PrescryptinsController
+//PrescriptionController
 
 //ScheduleController
 Route::get('/schedule', [App\Http\Controllers\ScheduleController::class, 'index']);
@@ -62,17 +70,24 @@ Route::get('/schedule/create', [App\Http\Controllers\ScheduleController::class, 
 //TreatmentController
 Route::get('/treatment', [App\Http\Controllers\TreatmentController::class, 'menu']);
 Route::get('/treatment/create', [App\Http\Controllers\TreatmentController::class, 'create']);
-Route::get('/treatment/{id}', [App\Http\Controllers\TreatmentController::class, 'index']);
+Route::get('/treatment/doctor/{id}', [App\Http\Controllers\TreatmentController::class, 'index']);
+Route::get('/treatment/{id}', [App\Http\Controllers\TreatmentController::class, 'show']);
 
 //UserController
+Route::get('account/{id}',  [App\Http\Controllers\UserController::class, 'edit']);
 Route::get('/user/data', [App\Http\Controllers\UserController::class, 'edit']);
+Route::get('/changepassword', [App\Http\Controllers\UserController::class, 'changePassword']);
 
 
 //VisitsController
-Route::get('/visits/create', [App\Http\Controllers\VisitsController::class, 'create']);
 Route::get('/visits', [App\Http\Controllers\VisitsController::class, 'index']);
+Route::get('/visits/create', [App\Http\Controllers\VisitsController::class, 'create']);
 Route::get('/visits/show', [App\Http\Controllers\VisitsController::class, 'show']);
+Route::get('/visits/menu', [App\Http\Controllers\VisitsController::class, 'showMenu']);
+Route::get('/visits/prescryptions', [App\Http\Controllers\VisitsController::class, 'indexRz']);
+Route::get('/visits/sick_leaves', [App\Http\Controllers\VisitsController::class, 'indexRz']);
 Route::get('/visits/{id}/show', [App\Http\Controllers\VisitsController::class, 'show']);
+
 
 
 
@@ -99,11 +114,14 @@ Route::post('/file/store', [App\Http\Controllers\FileController::class, 'store']
 //ManagerCoontroller
 
 
-//PrescryptinsController
+//PrescriptionController
+Route::post('/prescription/store/{id}', [App\Http\Controllers\PrescriptionController::class, 'store']);
 
 //ScheduleController
 Route::post('/storeSchedule', [App\Http\Controllers\ScheduleController::class, 'store']);
 
+//SickLeaveController
+Route::post('/sickLeave/store/{id}', [App\Http\Controllers\SickLeaveController::class, 'store']);
 
 //SpecializationController
 
@@ -113,7 +131,9 @@ Route::post('/treatment/store', [App\Http\Controllers\TreatmentController::class
 
 //UserController
 Route::post('/updateUser', [App\Http\Controllers\UserController::class, 'update']);
+Route::post('/updatePassword', [App\Http\Controllers\UserController::class, 'updatePassword']);
 
 //VisitsController
-Route::post('/storeVisit', [App\Http\Controllers\VisitsController::class, 'store']);
+Route::post('/visit/store', [App\Http\Controllers\VisitsController::class, 'store']);
+Route::post('/visit/create', [App\Http\Controllers\VisitsController::class, 'create']);
 

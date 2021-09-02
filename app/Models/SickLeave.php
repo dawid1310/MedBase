@@ -12,9 +12,8 @@ class SickLeave extends Model
     protected $fillable = [
         'start',
         'end',
-        'reason',
         'visit_id',
-        'disease_id'
+        'code'
     ];
 
     public function visit(): BelongsTo
@@ -22,8 +21,4 @@ class SickLeave extends Model
         return $this->belongsTo(Visit::class);
     }
 
-    public function disease(): BelongsTo
-    {
-        return $this->belongsTo(Disease::class);
-    }
 }

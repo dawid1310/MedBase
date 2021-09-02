@@ -96,24 +96,25 @@
 
 
     <!-- Start Search -->
-    <section class="service-wrapper py-3">
-        <div class="container-fluid pb-3">
-            <div class="row">
+    <section class="service-wrapper py-3 mx-auto">
+        <div class="container-fluid pb-3 mx-auto">
+            <div class="row mx-auto">
                 <h2 class="h2 text-center col-12 py-5 semi-bold-600">Znajdź lekarza</h2>
-                <div class="service-header col-2 col-lg-3 text-end light-300">
-                    <i class='bx h3 mt-1'></i>
-                </div>
-                <div class="row service-heading col-10 col-lg-9 text-start float-end light-300">
-                    <form method="GET" action="search" class="form-inline my-2 my-lg-0">
-                        <input name="doctor" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Wyszukaj</button>
+                <div class="row service-heading col-10 col-lg-9 text-start light-300 mx-auto">
+                    <form method="GET" action="search" class="form-inline my-2 my-lg-0 mx-auto">
+                        <input name="doctor" class="form-control mr-sm-2 mx-auto w-50" type="search" placeholder="Search"
+                            aria-label="Search">
+                        
+                            <button class="btn nav-link btn-outline-primary active shadow rounded-pill text-light px-4 light-300 mx-auto mt-3 mb-2"
+                                type="submit">Wyszukaj</button>
+
                     </form>
                 </div>
-                <div class="service-heading col-10 col-lg-9 text-start float-end light-300">
-                    <h2 class="h3 pb-4 typo-space-line">Wyszukiwanie lekarzy naszego serwisu</h2>
+                <div class="service-heading col-10 col-lg-9 text-start light-300 mx-auto">
+                    <h2 class="h3 pb-4  text-center">Wyszukiwanie lekarzy naszego serwisu</h2>
                 </div>
             </div>
-            <p class="service-footer col-10 offset-2 col-lg-9 offset-lg-3 text-start pb-3 text-muted px-2">
+            <p class="service-footer col-10 offset-2 col-lg-9 offset-lg-3 text-start pb-3 text-muted px-2 mx-auto">
                 Dzięki wysukiwarce możesz znaleźć lekarza wyszukując go po imieniu i nazwisku lub znaleźć lekarza danej
                 specjalizacji.
             </p>

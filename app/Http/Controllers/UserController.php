@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -47,7 +48,9 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        /*$user = DB::table('users')
+        ->select('name', 'surname', 'email', 'phone', 'pesel')
+        ->where('id')*/
     }
 
     /**
@@ -94,6 +97,25 @@ class UserController extends Controller
         //
     }
 
+    public function changePassword()
+    {
+        return view('users.changePassword');
+    }
+
+    public function updatePassword(Request $request){
+
+        $user = User::find(Auth::user()->id);
+        $password = request('password');
+        if(strlen($password)>8)
+        {
+            $user->password = Hash::make($password);
+            $user->save(); 
+            return redirect('/account/'.Auth::user()->id);
+        }
+        return redirect('/changepassword');
+
+    }
+
     protected function validator(){
         return request()->validate([
             'name' => 'required|string|max:255',
@@ -101,6 +123,12 @@ class UserController extends Controller
             'phone' => 'max:9|min:9',  
             'pesel' => 'max:11|min:11',
             'email' => 'required|string|email|max:255',
+        ]);
+    }
+
+    protected function validadePassword(){
+        return request()->validate([
+            'password' => 'required|string|min:8|confirmed'
         ]);
     }
 }

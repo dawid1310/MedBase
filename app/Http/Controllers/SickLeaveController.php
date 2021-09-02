@@ -3,6 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Visit;
+use App\Models\SickLeave;
+use App\Mail\MailSent;
+use App\Http\Controllers\MailController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Carbon;
 
 class SickLeaveController extends Controller
 {
@@ -32,9 +40,44 @@ class SickLeaveController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+        $start =  Carbon::now();
+        $end = Carbon::now()->addDays(request('days'));
+        $addres = request('email');
+        $name = Auth::user()->name;
+        $surname = Auth::user()->surname;
+        if(!request('discarded'))
+        {
+            $mail = [
+                'email' => $addres,
+                0=>"Zwolnienie zostało wystawione.",
+                1=>"Numer zwolnienia: ".request('code'),
+                2=>"Podanie rozpatrzył lek. ".$name." ".$surname
+            ];
+            $mailController = (new MailController)->SickLeave($mail);
+            $sickLeave = new SickLeave();
+            $sickLeave->start = $start->toDateString();
+            $sickLeave->end = $end->toDateString(); 
+            $sickLeave->visit_id = $id; 
+            $sickLeave->code = request('code');
+            $sickLeave->save();  
+        }else{
+            $mail = [
+                'email' => $addres,
+                0=>"Podanie o zwolnienie zostało odrzucone",
+                1=>request('doctor_desc'),
+                2=>"Podanie rozpatrzył lek. ".$name." ".$surname
+            ];
+            $mailController = (new MailController)->SickLeave($mail);
+        }
+        Visit::where('id', $id)
+        ->update([
+            'doctor_desc'=>request('doctor_desc'),
+            'done'=>TRUE
+        ]);
+
+        return redirect('visits/sick_leaves');  
     }
 
     /**

@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Visit;
+use App\Models\Prescription;
+use App\Http\Controllers\MailController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class PrescriptionController extends Controller
 {
@@ -32,9 +38,41 @@ class PrescriptionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+        $name = Auth::user()->name;
+        $surname = Auth::user()->surname;
+        $addres = request('email');
+        if(!request('discarded'))
+        {
+            $mail = [
+                'email' => $addres,
+                0=>"Recepta została wystawiona.",
+                1=>"Numer recepty: ".request('code'),
+                2=>"Podanie rozpatrzył lek. ".$name." ".$surname
+            ];
+            $mailController = (new MailController)->sendPres($mail);
+            $prescryption = new Prescription();
+            $prescryption->code = request('code'); 
+            $prescryption->visit_id = $id; 
+            $prescryption->save();  
+        }else{
+            $mail = [
+                0=>"Podanie o receptę zostało odrzucone",
+                1=>request('doctor_desc'),
+                2=>"Podanie rozpatrzył lek. ".$name." ".$surname
+            ];
+            $mailController = (new MailController)->sendPres($mail);
+        }
+        Visit::where('id', $id)
+        ->update([
+            'doctor_desc'=>request('doctor_desc'),
+            'done'=>TRUE
+        ]);
+
+        return redirect('visits/prescryptions');   
+
+
     }
 
     /**
@@ -45,7 +83,7 @@ class PrescriptionController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
