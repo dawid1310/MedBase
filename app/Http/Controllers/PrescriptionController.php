@@ -48,25 +48,25 @@ class PrescriptionController extends Controller
             $mail = [
                 'email' => $addres,
                 0=>"Recepta została wystawiona.",
-                1=>"Numer recepty: ".request('code'),
+                1=>"Numer recepty: ".strip_tags(request('code')),
                 2=>"Podanie rozpatrzył lek. ".$name." ".$surname
             ];
             $mailController = (new MailController)->sendPres($mail);
             $prescryption = new Prescription();
-            $prescryption->code = request('code'); 
+            $prescryption->code = strip_tags(request('code')); 
             $prescryption->visit_id = $id; 
             $prescryption->save();  
         }else{
             $mail = [
                 0=>"Podanie o receptę zostało odrzucone",
-                1=>request('doctor_desc'),
+                1=>strip_tags(request('doctor_desc')),
                 2=>"Podanie rozpatrzył lek. ".$name." ".$surname
             ];
             $mailController = (new MailController)->sendPres($mail);
         }
         Visit::where('id', $id)
         ->update([
-            'doctor_desc'=>request('doctor_desc'),
+            'doctor_desc'=>strip_tags(request('doctor_desc')),
             'done'=>TRUE
         ]);
 

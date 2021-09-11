@@ -23,8 +23,23 @@
     </style>
 @endsection
 @section('content')
+<section style="background-color: #03acfa !important;">
+    <div class="container py-5">
+        <div class="row d-flex justify-content-center text-center">
+            <div class="col-lg-2 col-12 text-light align-items-center">
+                <i class='display-1 bi bi-heart-half'></i>
+            </div>
+            <div class="col-lg-7 col-12 text-light pt-2">
+                <h3 class="h4 light-300">Wyszukiwani lekarze</h3>
+                <p class="light-300">Nasi najlepsi specjaliści z wybtanej specjalizacji.</p>
+            </div>
+            <div class="col-lg-2 col-12 text-light align-items-center">
+                <i class='display-1 bi bi-heart-half'></i>
+            </div>
+        </div>
+    </div>
+</section>
 <div class="col-xl-10 col-md-10 col-sm-12 mx-auto">
-    <h1 class="text-center">dodaj jakis napis</h1>
 <div class="row gx-5 gx-sm-3 gx-lg-5 gy-lg-5 gy-3 pb-3 pt-4 ">
     @foreach ($doctors as $doctor)
     <div class="col-xl-4 col-md-4 col-sm-6 project ui graphic branding">

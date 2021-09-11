@@ -47,7 +47,7 @@ class FileController extends Controller
 
             $file->name = time() .'_'. $request->file->getClientOriginalName();
             $file->file_path = '/storage/' . $filePath;
-            $file->description = request('description');
+            $file->description = strip_tags(request('description'));
             $file->treatment_id	 = request('treatment_id');
             $file->save();
 

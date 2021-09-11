@@ -46,7 +46,7 @@ input[type=time]::-webkit-datetime-edit-minute-field {
 
 /* AM/PM */
 input[type=time]::-webkit-datetime-edit-ampm-field {
-  background-color: #7155d3;
+  background-color: #5577d3;
   border-radius: 15%;
   color: #fff;
   padding: 19px 13px;
@@ -2721,46 +2721,6 @@ fieldset:disabled a.btn {
   pointer-events: none;
 }
 
-.btn-primary {
-  color: #fff;
-  background-color: #3490dc;
-  border-color: #3490dc;
-}
-
-.btn-primary:hover {
-  color: #fff;
-  background-color: #227dc7;
-  border-color: #2176bd;
-}
-
-.btn-primary:focus,
-.btn-primary.focus {
-  color: #fff;
-  background-color: #227dc7;
-  border-color: #2176bd;
-  box-shadow: 0 0 0 0.2rem rgba(82, 161, 225, 0.5);
-}
-
-.btn-primary.disabled,
-.btn-primary:disabled {
-  color: #fff;
-  background-color: #3490dc;
-  border-color: #3490dc;
-}
-
-.btn-primary:not(:disabled):not(.disabled):active,
-.btn-primary:not(:disabled):not(.disabled).active,
-.show > .btn-primary.dropdown-toggle {
-  color: #fff;
-  background-color: #2176bd;
-  border-color: #1f6fb2;
-}
-
-.btn-primary:not(:disabled):not(.disabled):active:focus,
-.btn-primary:not(:disabled):not(.disabled).active:focus,
-.show > .btn-primary.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.2rem rgba(82, 161, 225, 0.5);
-}
 
 .btn-secondary {
   color: #fff;
@@ -7010,7 +6970,10 @@ a.close.disabled {
 }
 
 .bg-primary {
-  background-color: #3490dc !important;
+  background-color: #03c0fa !important;
+}
+.bg-primary-color {
+  background-color: #03c0fa !important;
 }
 
 a.bg-primary:hover,

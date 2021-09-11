@@ -31,7 +31,7 @@ class SentSickLeave extends Mailable
      */
     public function build()
     {
-        //wysyłanie sms (new NotificationController)->sendSmsNotificaition($this->mail);
+        (new NotificationController)->sendSmsNotificaition($this->mail);
 
         return $this->subject('MedBase - Zwolnienie')
         ->with([

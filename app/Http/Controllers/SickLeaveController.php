@@ -49,19 +49,31 @@ class SickLeaveController extends Controller
         $surname = Auth::user()->surname;
         if(!request('discarded'))
         {
+
             $mail = [
                 'email' => $addres,
                 0=>"Zwolnienie zostało wystawione.",
                 1=>"Numer zwolnienia: ".request('code'),
                 2=>"Podanie rozpatrzył lek. ".$name." ".$surname
             ];
-            $mailController = (new MailController)->SickLeave($mail);
+           $mailController = (new MailController)->SickLeave($mail);
+
+            $sickLeave = SickLeave::create([
+                'start' => $start->toDateString(),
+                'end' => $end->toDateString(),
+                'visit_id' =>$id,
+                'code' =>strip_tags(request('code')),
+
+            ]);
+
             $sickLeave = new SickLeave();
             $sickLeave->start = $start->toDateString();
             $sickLeave->end = $end->toDateString(); 
-            $sickLeave->visit_id = $id; 
-            $sickLeave->code = request('code');
+            $sickLeave->visit_id = $id1->id;
+            $sickLeave->code = strip_tags(request('code'));
             $sickLeave->save();  
+
+
         }else{
             $mail = [
                 'email' => $addres,
@@ -73,7 +85,7 @@ class SickLeaveController extends Controller
         }
         Visit::where('id', $id)
         ->update([
-            'doctor_desc'=>request('doctor_desc'),
+            'doctor_desc'=>strip_tags(request('doctor_desc')),
             'done'=>TRUE
         ]);
 

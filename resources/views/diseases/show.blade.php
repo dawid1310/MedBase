@@ -23,17 +23,24 @@
     </style>
 @endsection
 @section('content')
-<div class="mx-auto w-75">
-    <div >
-        <div class="card w-100">
-            <img src="{{ asset('/assets/img/stethoscope.jpg') }}" alt="Avatar" style="width:30%" class="mx-auto">
-            <div class="container">
-                <h3><b>{{ $disease->name }}</b></h3>
-                <p>{{ $disease->description }}</p>
+<section style="background-color: #03acfa !important;">
+    <div class="container py-5">
+        <div class="row d-flex justify-content-center text-center">
+            <div class="col-lg-2 col-12 text-light align-items-center">
+                <i class="display-1 bi bi-plus-lg"></i>
+            </div>
+            <div class="col-lg-7 col-12 text-light pt-2">
+                <h3 class="h4 light-300">{{ $disease->name }}</h3>
+                <p class="light-300">{{ $disease->description }}</p>
+            </div>
+            <div class="col-lg-2 col-12 text-light align-items-center">
+                <i class="display-1 bi bi-plus-lg"></i>
             </div>
         </div>
-        
     </div>
+</section>
+
+
 <section class="container overflow-hidden py-5">
 
     <div class="row gx-5 gx-sm-3 gx-lg-5 gy-lg-5 gy-3 pb-3 projects">

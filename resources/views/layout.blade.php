@@ -8,7 +8,7 @@
         <link rel="apple-touch-icon" href="{{ asset('./assets/img/apple-icon.png') }}">
         <link rel="shortcut icon" type="image/x-icon" href="{{ asset('./assets/img/favicon.ico') }}">
         <!-- Load Require CSS -->
-        <link href="{{ asset('./assets/css/bootstrap.min.css') }}" rel="stylesheet">
+       <!-- <link href="{ { asset('./assets/css/bootstrap.min.css') }}" rel="stylesheet"> -->
         <!-- Font CSS -->
         <link href="{{ asset('./assets/css/boxicon.min.css') }}" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
@@ -18,7 +18,10 @@
         <link rel="stylesheet" href="{{ asset('/assets/css/custom.css') }}">
         <link rel="stylesheet" href="{{ asset('./css/mdb.min.css') }}" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+        <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
         @yield('css')
+        @yield('js')
     </head>
 
     <body>
@@ -26,7 +29,7 @@
             <div class="container d-flex justify-content-between align-items-center">
                 <a class="navbar-brand h1" href="/">
                     <i class='bx bx-buildings bx-sm text-dark'></i>
-                    <span class="text-primary h4">MedBase</span>
+                    <span class="h4" style="color: #0d6efd">MedBase</span>
                 </a>
                 <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbar-toggler-success" aria-controls="navbarSupportedContent"
@@ -109,15 +112,14 @@
         @yield('content')
 
         <!-- Start Footer -->
-        <footer class="bg-secondary pt-4">
+        <footer class="pt-4" style="background-color: #03c0fa !important;">
             <div class="container">
                 <div class="row py-4">
 
                     <div class="col-lg-3 col-12 align-left">
                         <a class="navbar-brand" href="index.html">
                             <i class='bx bx-buildings bx-sm text-light'></i>
-                            <span class="text-light h5">Purple</span> <span
-                                class="text-light h5 semi-bold-600">Buzz</span>
+                            <span class="text-light h5">MedBase</span> 
                         </a>
                         <p class="text-light my-lg-4 my-2">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit,
@@ -153,77 +155,65 @@
                     </div>
 
                     <div class="col-lg-3 col-md-4 my-sm-0 mt-4">
-                        <h3 class="h4 pb-lg-3 text-light light-300">Our Company</h2>
+                        <h3 class="h4 pb-lg-3 text-light light-300">O nas</h2>
                             <ul class="list-unstyled text-light light-300">
                                 <li class="pb-2">
                                     <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a
-                                        class="text-decoration-none text-light" href="index.html">Home</a>
+                                        class="text-decoration-none text-light" href="/">Strona główna</a>
                                 </li>
                                 <li class="pb-2">
                                     <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a
-                                        class="text-decoration-none text-light py-1" href="about.html">About Us</a>
+                                        class="text-decoration-none text-light py-1" href="/about">Informacje</a>
                                 </li>
                                 <li class="pb-2">
                                     <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a
-                                        class="text-decoration-none text-light py-1" href="work.html">Work</a>
-                                </li>
-                                <li class="pb-2">
-                                    <i class='bx-fw bx bxs-chevron-right bx-xs'></i></i><a
-                                        class="text-decoration-none text-light py-1" href="pricing.html">Price</a>
+                                        class="text-decoration-none text-light py-1" href="/">Praca</a>
                                 </li>
                                 <li class="pb-2">
                                     <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a
-                                        class="text-decoration-none text-light py-1" href="contact.html">Contact</a>
+                                        class="text-decoration-none text-light py-1" href="/">Kontakt</a>
                                 </li>
                             </ul>
                     </div>
 
                     <div class="col-lg-3 col-md-4 my-sm-0 mt-4">
-                        <h2 class="h4 pb-lg-3 text-light light-300">Our Works</h2>
+                        <h2 class="h4 pb-lg-3 text-light light-300">Nasza praca</h2>
                         <ul class="list-unstyled text-light light-300">
                             <li class="pb-2">
                                 <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a
-                                    class="text-decoration-none text-light py-1" href="#">Branding</a>
+                                    class="text-decoration-none text-light py-1" href="/visits">Wizyty</a>
                             </li>
                             <li class="pb-2">
                                 <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a
-                                    class="text-decoration-none text-light py-1" href="#">Business</a>
+                                    class="text-decoration-none text-light py-1" href="/visits">Recepty</a>
                             </li>
                             <li class="pb-2">
                                 <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a
-                                    class="text-decoration-none text-light py-1" href="#">Marketing</a>
+                                    class="text-decoration-none text-light py-1" href="/visits">Zwolnienia</a>
                             </li>
                             <li class="pb-2">
                                 <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a
-                                    class="text-decoration-none text-light py-1" href="#">Social Media</a>
-                            </li>
-                            <li class="pb-2">
-                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a
-                                    class="text-decoration-none text-light py-1" href="#">Digital Solution</a>
-                            </li>
-                            <li class="pb-2">
-                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a
-                                    class="text-decoration-none text-light py-1" href="#">Graphic</a>
+                                    class="text-decoration-none text-light py-1" href="/visits">Terapie</a>
                             </li>
                         </ul>
                     </div>
 
                     <div class="col-lg-3 col-md-4 my-sm-0 mt-4">
-                        <h2 class="h4 pb-lg-3 text-light light-300">For Client</h2>
+                        <h2 class="h4 pb-lg-3 text-light light-300">Dla lekarzy</h2>
                         <ul class="list-unstyled text-light light-300">
                             <li class="pb-2">
                                 <i class='bx-fw bx bx-phone bx-xs'></i><a class="text-decoration-none text-light py-1"
-                                    href="tel:010-020-0340">010-020-0340</a>
+                                    href="tel:010-020-0340">516-851-833</a>
                             </li>
                             <li class="pb-2">
                                 <i class='bx-fw bx bx-mail-send bx-xs'></i><a
                                     class="text-decoration-none text-light py-1"
-                                    href="mailto:info@company.com">info@company.com</a>
+                                    href="mailto:info@company.com">info@medbase.com</a>
                             </li>
 
                             <li class="pb-2">
                                 <i class='bx-fw bx bx-mail-send bx-xs'></i><a
-                                    class="text-decoration-none text-light py-1" href="/doctors/registration">Zostań
+                                    class="text-decoration-none text-light py-1" href="/doctor/registration">Zostań
                                     lekarzem naszego serwisu</a>
                             </li>
                         </ul>
@@ -232,18 +222,12 @@
                 </div>
             </div>
 
-            <div class="w-100 bg-primary py-3">
+            <div class="w-100 py-3" style="background-color: #03acfa !important;">
                 <div class="container">
                     <div class="row pt-2">
                         <div class="col-lg-6 col-sm-12">
                             <p class="text-lg-start text-center text-light light-300">
-                                © Copyright 2021 Purple Buzz Company. All Rights Reserved.
-                            </p>
-                        </div>
-                        <div class="col-lg-6 col-sm-12">
-                            <p class="text-lg-end text-center text-light light-300">
-                                Designed by <a rel="sponsored" class="text-decoration-none text-light"
-                                    href="https://templatemo.com/" target="_blank"><strong>TemplateMo</strong></a>
+                                © Copyright 2021 Dawid Kosmala. All Rights Reserved.
                             </p>
                         </div>
                     </div>

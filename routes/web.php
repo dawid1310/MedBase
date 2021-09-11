@@ -35,13 +35,13 @@ Route::get('/disease/{id}', [App\Http\Controllers\DiseaseController::class, 'sho
 //DoctorController
 Route::get('/doctors', [App\Http\Controllers\DoctorController::class, 'index']);
 Route::get('/doctors/history', [App\Http\Controllers\DoctorController::class, 'history']);
-Route::get('/doctors/{id}', [App\Http\Controllers\DoctorController::class, 'show']);
-Route::get('/doctors/{id}/edit', [App\Http\Controllers\DoctorController::class, 'edit']);
 Route::get('/doctors/create', [App\Http\Controllers\DoctorController::class, 'create']);
 Route::get('/search', [App\Http\Controllers\DoctorController::class, 'search']);
+Route::get('/doctors/{id}', [App\Http\Controllers\DoctorController::class, 'show']);
+Route::get('/doctors/{id}/edit', [App\Http\Controllers\DoctorController::class, 'edit']);
 
 //DoctorsRegistrationController
-Route::get('/doctors/registration', [App\Http\Controllers\DoctorsRegistrationController::class, 'create']);
+Route::get('/doctor/registration', [App\Http\Controllers\DoctorsRegistrationController::class, 'create']);
 Route::get('/all-requests', [App\Http\Controllers\DoctorsRegistrationController::class, 'show']);
 
 
@@ -69,6 +69,8 @@ Route::get('/schedule/create', [App\Http\Controllers\ScheduleController::class, 
 
 //TreatmentController
 Route::get('/treatment', [App\Http\Controllers\TreatmentController::class, 'menu']);
+Route::get('/treatment/user', [App\Http\Controllers\TreatmentController::class, 'index']);
+Route::get('/treatment/store', [App\Http\Controllers\TreatmentController::class, 'store']);
 Route::get('/treatment/create', [App\Http\Controllers\TreatmentController::class, 'create']);
 Route::get('/treatment/doctor/{id}', [App\Http\Controllers\TreatmentController::class, 'index']);
 Route::get('/treatment/{id}', [App\Http\Controllers\TreatmentController::class, 'show']);

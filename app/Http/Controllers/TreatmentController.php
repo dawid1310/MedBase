@@ -163,7 +163,11 @@ class TreatmentController extends Controller
         ->select('users.name', 'users.surname')
         ->first();
 
-        return view('treatments.show', ['treatment' => $treatment, 'user' => $user]);
+        $files = DB::table('files')
+        ->where('treatment_id', $id)
+        ->select('name', 'description', 'file_path')
+        ->get();
+        return view('treatments.show', ['treatment' => $treatment, 'user' => $user, 'files'=>$files]);
 
 
     }

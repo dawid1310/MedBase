@@ -37,6 +37,10 @@ class Visit extends Model
     {
         return $this->belongsTo(Treatment::class);
     }
+    public function sickleaves(): HasOne
+    {
+        return $this->hasOne(SickLeave::class);
+    }
     
 
 }

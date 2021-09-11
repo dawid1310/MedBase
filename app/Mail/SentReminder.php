@@ -28,7 +28,7 @@ class SentReminder extends Mailable
      */
     public function build()
     {
-        //(new NotificationController)->sendSmsNotificaition($this->mail);//wysyłanie sms
+        (new NotificationController)->sendSmsNotificaition($this->mail);//wysyłanie sms
         return $this->subject('MedBase - Przypomnienie o nadchodzącej wizycie')
         ->with([
             'mail' =>  $this->mail,

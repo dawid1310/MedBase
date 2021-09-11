@@ -1,93 +1,92 @@
 @extends('layout')
 
 @section('content')
+<section class=" mb-3" style="background-color: #03acfa !important;">
+    <div class="container py-5">
+        <div class="row d-flex justify-content-center text-center">
+            <div class="col-lg-2 col-12 text-light align-items-center">
+                <i class='display-1 bi bi-file-earmark'></i>
+            </div>
+            <div class="col-lg-7 col-12 text-light pt-2">
+                <h3 class="h4 light-300">Zapoznaj się z podaniami o zwolnień lekarskich</h3>
+                <p class="light-300">Poniżej wyświetlono dostępne podania</p>
+            </div>
+            <div class="col-lg-2 col-12 text-light align-items-center">
+                <i class='display-1 bi bi-file-earmark'></i>
+            </div>
+        </div>
+    </div>
+</section>
     <div class="w-75 mx-auto table-responsive">
-        <h5>Zwolnienia</h5>
-    
-        <table class="table table-hover ">
-            <thead>
-
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col" class="col-sm-1">Imie</th>
-                    <th scope="col" class="col-sm-1">Nazwisko</th>
-                    <th scope="col" class="col-sm-1">Data</th>
-                    <th scope="col" class="col-sm-1">Godzina</th>
-                    <th scope="col" class="col-sm-3">Opis pacjenta</th>
-                    <th scope="col">Ilość dni</th>
-                    <th scope="col">Numer zwolnienia</th>
-                    <th scope="col" class="col-sm-3">Uwagi lekarza</th>
-                    <th scope="col" class="col-sm-1">Odrzucenie</th>
-                    <th class="col-sm-1"></th>
-
-                </tr>
-
-            </thead>
-            <tbody>
-                @foreach ($visits as $visit)
-                    <tr>
-                        <th scope="row">{{ $loop->iteration }}</th>
-
-                        <form action="/sickLeave/store/{{ $visit->id }}" method="POST">
-                            @csrf
-                            <input type="mail" value={{$visit->email}} name="email" hidden>
-                            <td>
-                                {{ $visit->name }}
-                            </td>
-                            <td>
-                                {{ $visit->surname }}
-                            </td>
-                            <td>
-                                {{ $visit->day }}
-                            </td>
-                            <td>
-                                {{ $visit->time }}
-                            </td>
-
-                            <td>
-                                {{ $visit->patient_desc }}
-                            </td>
-                            <td>
-                                <div class="form-group row">
-                                    <input type="number" class="form-control" name="days" max="30" minlength="1" placeholder="7">
-                                </div>
-                            </td>
-                            <td>
-                                <div class="form-group row">
-                                    <input type="text" class="form-control" name="code" maxlength="6" minlength="6" placeholder="AB1234">
-                                </div>
-                            </td>
-                            <td>
-                                <div class="form-group row">
-                                    <textarea name="doctor_desc" id="" cols="60" rows="2" placeholder="Powód wystawienia lub odrzucenia"></textarea>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="form-group row">
-
-                                    <input type="checkbox" name="discarded">
-                                </div>
-                            </td>
 
 
 
-                            <td>
-                                <div>
-                                    <button type="submit" class="btn btn-success" title="Wyślij receptę">
-                                        <i class="bi bi-briefcase"></i></button>
 
-                        </form>
-                        <!-- tu jest drugi forumlarz  jakbys chciał <form action="/deleteDish/{ { $visit->id }}" method="POST">
-    @ csrf
-    @ method('DELETE')
-    <button type="submit" class="btn btn-danger" title="Usuń danie">
-    <i class="bi bi-briefcase"></i></button>
-    </form>-->
     </div>
-    </td>
-    </tr>
+
+
+
+
+
+    @foreach ($visits as $visit)
+    <div class="w-75 row mx-auto border border-primary mb-2 pb-2">
+
+        <form action="/sickLeave/store/{{ $visit->id }}" method="POST">
+            @csrf
+            <input type="mail" value={{ $visit->email }} name="email" hidden>
+            <div class="col">
+                <h4>Pacjent: {{ $visit->name }} {{ $visit->surname }}</h4>
+            </div>
+            <div class="col">
+                <h5>Data wizyty: {{ $visit->day }} Godzina wizyty: {{ $visit->time }}</h5>
+            </div>
+
+            <div class="col">
+                <h5>Opis pacjenta: {{ $visit->patient_desc }}</h5>
+            </div>
+            
+        
+  
+
+                <div class="col-xl-8 p-2">
+                    <div class="form-group row">
+                        <input type="number" class="form-control" name="days" max="30" minlength="1"
+                        placeholder="Ilość dni">
+                    </div>
+                </div>
+   
+                <div class="col-xl-8 p-2">
+                    <div class="form-group row">
+                        <input type="text" class="form-control" name="code" maxlength="6" minlength="6"
+                        placeholder="Numer zwolnienia, np.: AB1234">
+                    </div>
+                </div>
+          
+        
+                <div class="col-xl-8 p-2">
+                    <div class="form-group row">
+                        <textarea name="doctor_desc" id="" cols="60" rows="2"
+                        placeholder="Powód wystawienia lub odrzucenia"></textarea>
+                    </div>
+                </div>
+
+                <div class="col form-check">
+                    <h5><input type="checkbox" name="discarded" id="discarded">
+                        <label for="discarded" class="form-check-label">Odrzucenie podania o zwolnienie lekarskie</label>
+                    </h5>
+                </div>
+
+
+
+            <div class="col">
+                <div>
+                    <button type="submit" class="btn btn-success text-light" title="Wyślij receptę">
+                        <i class="bi bi-briefcase"></i> Wyślij zwolnienie</button>
+                </div>
+            </div>
+
+        </form>
+
+    </div>        
     @endforeach
-    </tbody>
-    </table>
-    </div>
 @endsection

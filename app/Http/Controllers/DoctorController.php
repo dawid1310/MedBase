@@ -63,7 +63,6 @@ class DoctorController extends Controller
             ->get();
         $time = explode(":", Carbon::now("Europe/Warsaw")->toTimeString());
         $curentTime = date("H:i", strtotime(strval($time[0]) . strval(intval($time[1]) + 5)));
-
         foreach ($weekDays as $weekDay) {
             foreach ($schedule as $key) {
                 if ($weekDay == $key->day) {
@@ -227,6 +226,34 @@ class DoctorController extends Controller
                 ->where('doctor_id', $docid)
                 ->selectRaw('count(id) as number_of_visits')
                 ->first(),
+            
+            'noPv' => DB::table('visits')
+            ->join('visit_types', 'visits.visit_type_id', '=', 'visit_types.id')
+            ->where('visits.doctor_id', $docid)
+            ->where('visit_types.name', 'Recepta')
+            ->selectRaw('count(visits.id) as noPv')
+            ->first(),
+
+            'noSlv' => DB::table('visits')
+            ->join('visit_types', 'visits.visit_type_id', '=', 'visit_types.id')
+            ->where('visits.doctor_id', $docid)
+            ->where('visit_types.name', 'Zwolnienie')
+            ->selectRaw('count(visits.id) as noSlv')
+            ->first(),
+
+            'noCv' => DB::table('visits')
+            ->join('visit_types', 'visits.visit_type_id', '=', 'visit_types.id')
+            ->where('visits.doctor_id', $docid)
+            ->where('visit_types.name', 'Konsultacja')
+            ->selectRaw('count(visits.id) as noCv')
+            ->first(),
+
+            'noTv' => DB::table('visits')
+            ->join('visit_types', 'visits.visit_type_id', '=', 'visit_types.id')
+            ->where('visits.doctor_id', $docid)
+            ->where('visit_types.name', 'Terapia')
+            ->selectRaw('count(visits.id) as noTv')
+            ->first(),
 
             'noP' => DB::table('prescriptions')
                 ->join('visits', 'prescriptions.visit_id', 'visits.id')
@@ -244,9 +271,8 @@ class DoctorController extends Controller
                 ->where('doctor_id', $docid)
                 ->count(DB::raw('distinct(treatment_id)'))
         ];
-
-        dd($stats);
-        return view('doctors.history', ['doctors' => $doctors]);
+        
+        return view('doctors.history', ['stats' => $stats]);
     }
 
 }

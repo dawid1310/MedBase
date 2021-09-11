@@ -1,10 +1,23 @@
 @extends('layout')
 @section('content')
-<div class="mx-auto col-xl-6">
+<section style="background-color: #03c0fa !important;">
+    <div class="container py-5">
+        <div class="row d-flex justify-content-center text-center">
+            <div class="col-lg-2 col-12 text-light align-items-center">
+                <i class='display-1 bx bxs-box bx-lg'></i>
+            </div>
+            <div class="col-lg-7 col-12 text-light pt-2">
+                <h3 class="h4 light-300">Przypadek pacjenta: {{ $user->name }} {{ $user->surname }}</h3>
+                <p class="light-300">Quis ipsum suspendisse ultrices gravida.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="mx-auto col-xl-6 py-5">
     <form action="/updateUser" method="POST">
 
         @csrf
-
+<h4> Aktualizuj swoje dane </h4>
         <input type="number" class="form-control" name="id" value="{{ $user->id }}" hidden>
         <div class="form-group row">
             <label for="name" class="col-md-3 col-form-label text-md-left">{{ __('Imię') }}</label>
