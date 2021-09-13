@@ -353,8 +353,8 @@
     <div class="cotn_principal">
         <div class="cont_centrar">
         
-          <div class="cont_login">
-        <div class="cont_info_log_sign_up">
+        <div class="cont_login col-sm-10 col-12">
+        <div class="cont_info_log_sign_up col-sm-10 col-12">
               <div class="col_md_login">
         <div class="cont_ba_opcitiy">
                 
@@ -398,7 +398,7 @@
 
             <form action="{{ route('register') }}" method="post">
                 @csrf
-                <div class="cont_form_sign_up">
+                <div class="cont_form_sign_up col-sm-10 col-12">
         
                     <h2>REJESTRACJA</h2>
 

@@ -78,13 +78,13 @@ class VisitsController extends Controller
      */
     public function show($docid = 0)
     {
-
+        $data = [];
         if (!Auth::user()) {
             return redirect('/login');
         }
         if (Auth::user()->account_type == 'User') {
             $id = Auth::user()->id;
-
+            
             $visits = DB::table('visits')
                 ->join('doctors', 'doctors.id', 'visits.doctor_id')
                 ->join('users', 'users.id', 'doctors.user_id')
@@ -93,19 +93,48 @@ class VisitsController extends Controller
                 ->where('visits.day', $_GET['operator'], Carbon::now("Europe/Warsaw")->toDateString())
                 ->select('visits.day', 'visits.time', 'users.name', 'users.surname', 'specializations.specialization')
                 ->get();
-            return view('visits.show', ['visits' => $visits]);
+                foreach($visits as $visit){
+                    $date = explode('-', $visit->day);
+                    $date[0]=intVal($date[0]);
+                    $date[1]=intVal($date[1])-1;
+                    $date[2]=intVal($date[2]);
+                    $title = "Lekarz: ".$visit->name." ".$visit->surname.", ".$visit->specialization.", Godzina wizyty: ".$visit->time;
+                    $values=[
+                        "Date" => $date,
+                        "Title" => $title
+                    ];
+                    array_push($data, $values);
+                }
+  
+
         }
         if (Auth::user()->account_type == 'Doctor') {
             $visits = DB::table('visits')
-                ->join('doctors', 'doctors.id', 'visits.doctor_id')
-                ->join('users', 'users.id', 'doctors.user_id')
-                ->join('specializations', 'specializations.id', 'doctors.specialization_id')
+                ->join('users', 'users.id', 'visits.user_id')
                 ->where('visits.doctor_id', $docid)
                 ->where('visits.day', $_GET['operator'], Carbon::now("Europe/Warsaw")->toDateString())
-                ->select('visits.day', 'visits.time', 'users.name', 'users.surname', 'specializations.specialization')
-                ->get();
-            return view('visits.show', ['visits' => $visits]);
+                ->select('visits.day', 'visits.time', 'users.name', 'users.surname', 'users.phone')
+                ->get(); 
+                foreach($visits as $visit){
+                    $date = explode('-', $visit->day);
+                    $date[0]=intVal($date[0]);
+                    $date[1]=intVal($date[1])-1;
+                    $date[2]=intVal($date[2]);
+                    $title = "Pacejnt: ".$visit->name." ".$visit->surname." Telefon pacjenta: ".$visit->phone.", Godzina wizyty: ".$visit->time;
+                    $values=[
+                        "Date" => $date,
+                        "Title" => $title
+                    ];
+                    
+                    array_push($data, $values);
+                    
+                }           
         }
+
+
+        $data = json_encode($data);
+
+        return view('visits.show', ['data' => $data]);
 
     }
 
@@ -173,5 +202,22 @@ class VisitsController extends Controller
     public function showMenu()
     {
         return view('visits.menu');
+    }
+
+    public function latest(Request $request){
+        $dicid = $request->cookie('docid');
+        $visit = DB::table('visits')
+        ->join('users', 'visits.user_id', 'users.id')
+        ->where('visits.doctor_id', '=', $dicid)
+        ->where(function ($query) {
+            $query->where('visits.day', '>=', now())
+                ->where('visits.time', '>=', Carbon::now("Europe/Warsaw")->toTimeString())
+                ->orWhere('visits.day', '>', now());
+        })
+        ->select('visits.id', 'users.phone', 'users.name', 'users.surname', 'visits.patient_desc', 'visits.day', 'visits.time')
+        ->orderBy('visits.day', 'asc')
+        ->orderBy('visits.time', 'asc')
+        ->first();
+        return view('visits.latest', ['visit' => $visit]);
     }
 }

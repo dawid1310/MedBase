@@ -29,26 +29,31 @@
 
     <script src="{{ asset('./assets/js/caleandar.js') }}"></script>
 
-    <script>
-        var date = {!! json_encode($visits, JSON_HEX_TAG) !!};
-        console.log(date);
-
+    <script type = "text/javascript">
+        var date = <?= $data?>;
+        var events1=[];
+        date.forEach(fun);
         var events = [{
                 'Date': new Date(2021, 8, 3),
                 'Title': 'Konsultacja - Pediatra, Jan Kowalski: 16:15'
             },
             {
-                'Date': new Date(2021, 8, 9),
-                'Title': 'Jan Kowalski - Kardiologia: 08:00 '
-            },
-            {
-                'Date': new Date(2016, 6, 27),
-                'Title': '25 year anniversary',
-                'Link': 'https://www.google.com.au/#q=anniversary+gifts'
-            },
+                'Date': new Date(2021, 8, 22),
+                'Title': 'Konsultacja - Pediatra, Jan Kowalski: 20:15'
+            }
         ];
+        console.log(events);
+        console.log(events1);
         var settings = {};
         var element = document.getElementById('caleandar');
-        caleandar(element, events, settings);
+        caleandar(element, events1, settings);
+
+        function fun(day){
+            var val ={
+                'Date': new Date(day["Date"][0], day["Date"][1], day["Date"][2]),
+                'Title': day["Title"]
+            };
+            events1.push(val);
+        }
     </script>
 @endsection

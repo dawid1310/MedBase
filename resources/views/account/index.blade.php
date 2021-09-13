@@ -173,7 +173,23 @@
                                 </div>
                             </a>
                         </div>
+
+                        <div class="col-xl-3 col-md-4 col-sm-6 project ui graphic">
+                            <a href="/visits/latest"
+                                class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
+                                <img class="card-img" src="./assets/img/md.jpg" alt="Card image">
+                                <div class="service-work-vertical card-img-overlay d-flex align-items-end">
+                                    <div class="service-work-content text-left text-light">
+                                        <span class="btn btn-outline-light rounded-pill mb-lg-3 px-lg-4 light-300">Najbliższa wizyta</span>
+                                        <p class="card-text">Sprawdź dane dotyzcące najbliższej wizyty</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
                     </div>
+
+            
+                
                 </section>
 
             @else

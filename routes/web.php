@@ -86,6 +86,7 @@ Route::get('/visits', [App\Http\Controllers\VisitsController::class, 'index']);
 Route::get('/visits/create', [App\Http\Controllers\VisitsController::class, 'create']);
 Route::get('/visits/show', [App\Http\Controllers\VisitsController::class, 'show']);
 Route::get('/visits/menu', [App\Http\Controllers\VisitsController::class, 'showMenu']);
+Route::get('/visits/latest', [App\Http\Controllers\VisitsController::class, 'latest']);
 Route::get('/visits/prescryptions', [App\Http\Controllers\VisitsController::class, 'indexRz']);
 Route::get('/visits/sick_leaves', [App\Http\Controllers\VisitsController::class, 'indexRz']);
 Route::get('/visits/{id}/show', [App\Http\Controllers\VisitsController::class, 'show']);
