@@ -4,11 +4,14 @@
     <div class="container py-5">
         <div class="row d-flex justify-content-center text-center">
             <div class="col-lg-2 col-12 text-light align-items-center">
-                <i class='display-1 bx bxs-box bx-lg'></i>
+                <i class='display-1 bi bi-bounding-box'></i>
             </div>
             <div class="col-lg-7 col-12 text-light pt-2">
-                <h3 class="h4 light-300">Przypadek pacjenta: {{ $user->name }} {{ $user->surname }}</h3>
+                <h3 class="h4 light-300">Konto użytkownika: {{ $user->name }} {{ $user->surname }}</h3>
                 <p class="light-300">Quis ipsum suspendisse ultrices gravida.</p>
+            </div>
+            <div class="col-lg-2 col-12 text-light align-items-center">
+                <i class='display-1 bi bi-bounding-box'></i>
             </div>
         </div>
     </div>

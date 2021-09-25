@@ -52,8 +52,9 @@ Route::get('/all-requests', [App\Http\Controllers\DoctorsRegistrationController:
 Route::get('/test', [App\Http\Controllers\HomeController::class, 'test']);
 Route::get('/home', [App\Http\Controllers\HomeController::class]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/about', [App\Http\Controllers\HomeController::class, 'about']);
-
+Route::get('/about', function () {
+    return view('welcome');
+});
 //ManagerCoontroller
 Route::get('/manage/doctors', [App\Http\Controllers\ManagerController::class, 'doctors']);
 Route::get('/manage', [App\Http\Controllers\ManagerController::class, 'index']);
