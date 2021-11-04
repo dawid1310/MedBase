@@ -7,8 +7,7 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## MedBase - Głównym celem pracy jest projekt oraz wykonanie systemu wspomagania wizyt lekarskich w trybie online. System został zaimplementowany w formie aplikacji webowej z dostępem uzyskiwanym przy użyciu przeglądarki internetowej. Główną funkcjonalnością systemu jest możliwość umawiania się na wizyty oraz zarządzanie wizytami przez lekarzy. Aplikacja zapewnia również system powiadamiania 
-o nadchodzących wizytach oraz o wypisanych receptach i zwolnieniach lekarskich za pomocą wiadomości e-mail i wiadomości SMS. System udostępnia również możliwość przesyłania plików mogących pomóc diagnozie danego przypadku.
+## MedBase - Głównym celem pracy jest projekt oraz wykonanie systemu wspomagania wizyt lekarskich w trybie online. System został zaimplementowany w formie aplikacji webowej z dostępem uzyskiwanym przy użyciu przeglądarki internetowej. Główną funkcjonalnością systemu jest możliwość umawiania się na wizyty oraz zarządzanie wizytami przez lekarzy. Aplikacja zapewnia również system powiadamiania o nadchodzących wizytach oraz o wypisanych receptach i zwolnieniach lekarskich za pomocą wiadomości e-mail i wiadomości SMS. System udostępnia również możliwość przesyłania plików mogących pomóc diagnozie danego przypadku.
 
 
 W projekcie wykorzystano:
