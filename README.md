@@ -26,14 +26,14 @@ W projekcie wykorzystano:
 
 Wykonane funkcjonalności:
 
--Rejestracja i logowanie pacjentów oraz lekarzy
--Powiadomienia SMS 
--Powiadomienia e-mail 
--Umawianie wizyt
--Wyatawanie recept oraz zwolnień
--Obsługa wizyt
--Przesyłanie pliów
--Prowadzenie terapii 
+- Rejestracja i logowanie pacjentów oraz lekarzy
+- Powiadomienia SMS 
+- Powiadomienia e-mail 
+- Umawianie wizyt
+- Wyatawanie recept oraz zwolnień
+- Obsługa wizyt
+- Przesyłanie pliów
+- Prowadzenie terapii 
 
 
 ## About Laravel
