@@ -12,17 +12,17 @@
 
 W projekcie wykorzystano:
 
--PHP
--Laravel
--MySQL
--HTML
--CSS
--Java Script
--Bootstrap
--MVC
--RWD
--Mailtrap
--Vonage
+- PHP
+- Laravel
+- MySQL
+- HTML
+- CSS
+- Java Script
+- Bootstrap
+- MVC
+- RWD
+- Mailtrap
+- Vonage
 
 Wykonane funkcjonalności:
 
